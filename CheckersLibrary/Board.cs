@@ -32,96 +32,6 @@ namespace CheckersLibrary
             {
                 for (int col = 0; col < cols; col++)
                 {
-                    if(row == 0)
-                    {
-                        if(col ==1 || col == 7)
-                        {
-                            Grid[row, col] = ePieceType.O;
-
-                        }
-                        else if(col == 5)
-                        {
-                            Grid[row, col] = ePieceType.K;
-                        }
-                        else
-                        {
-                            Grid[row, col] = ePieceType.None;
-
-                        }
-                    }
-                    else if(row == 1 && col == 0)
-                    {
-
-                        Grid[row, col] = ePieceType.O;
-
-                    }
-                    else if(row == 2 && (col == 3 || col ==5))
-                    {
-                        Grid[row, col] = ePieceType.O;
-
-                    }
-                    else if(row == 3)
-                    {
-                        if(col == 0)
-                        {
-                            Grid[row, col] = ePieceType.X;
-
-                        }
-                        else if(col == 2)
-                        {
-                            Grid[row, col] = ePieceType.O;
-
-                        }
-                        else
-                        {
-                            Grid[row, col] = ePieceType.None;
-
-                        }
-
-                    }
-                    else if(row == 4)
-                    {
-                        if (col == 5)
-                        {
-                            Grid[row, col] = ePieceType.O;
-                        }
-                        else if (col == 7)
-                        {
-                            Grid[row, col] = ePieceType.X;
-                        }
-                        else
-                        {
-                            Grid[row, col] = ePieceType.None;
-                        }
-
-                    }
-                    else if(row == 5 && (col == 0 || col == 6))
-                    {
-                        Grid[row, col] = ePieceType.X;
-
-                    }
-                    else if(row == 6 && col == 5)
-                    {
-                        Grid[row, col] = ePieceType.X;
-
-                    }
-                    else if(row == 7)
-                    {
-                        if(col % 2 == 0)
-                        {
-                            Grid[row, col] = ePieceType.X;
-                        }
-                        else
-                        {
-                            Grid[row, col] = ePieceType.None;
-
-                        }
-                    }
-                    else
-                    {
-                        Grid[row, col] = ePieceType.None;
-                    }
-                    /*
                     if (row < playerRows && (row + col) % 2 == 1)
                     {
                         Grid[row, col] = ePieceType.O;
@@ -134,7 +44,6 @@ namespace CheckersLibrary
                     {
                         Grid[row, col] = ePieceType.None;
                     }
-                    */
                 }
             }
         }

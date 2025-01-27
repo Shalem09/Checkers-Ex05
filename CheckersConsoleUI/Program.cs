@@ -36,6 +36,8 @@ namespace CheckersConsoleUI
             }
         }
 
+        // Here need to implement method that converts string Ab>Ba to int list of moves 0,1 > 1,0
+
         private static string PlayerVsPlayer(ref Player i_CurrentPlayer, string i_Move)
         {
             Player previousPlayer = i_CurrentPlayer == s_Game.m_Players[0] ? s_Game.m_Players[1] : s_Game.m_Players[0];
@@ -312,20 +314,19 @@ namespace CheckersConsoleUI
                         {
                             PrintBoard(i_Player, input);
                             Console.WriteLine($"{i_Player.m_Name} ({i_Player.m_Symbol}), you have additional eat moves.");
-                            input = Console.ReadLine();
+                            string nextMove = Console.ReadLine();
 
-                            if (!ValidateInput(input))
+                            while (!ValidateInput(nextMove))
+                            {
+                                nextMove = Console.ReadLine();
+                            }
+
+                            if (!eatMoves.Contains(nextMove))
                             {
                                 continue;
                             }
 
-                            if (!eatMoves.Contains(input))
-                            {
-                                Console.WriteLine("Invalid move. You must continue eating.");
-                                continue;
-                            }
-
-                            s_Game.MakeMove(input, i_Board, true);
+                            s_Game.MakeMove(nextMove, i_Board, true);
                         }
 
                         break;

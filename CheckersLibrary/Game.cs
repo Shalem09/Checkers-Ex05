@@ -47,18 +47,19 @@ namespace CheckersLibrary
 
         public void RestartGame()
         {
+            int boardSize = m_Board.Grid.GetLength(0);
             m_Board = new Board();
-            m_Board.SetBoard(m_Board.Grid.Length);
+            m_Board.SetBoard(boardSize);
             m_Players = m_Players;
             m_Quitter = null;
             m_IsGameOver = false;
         }
 
-        private void CheckForwardMoves(int row, int col, int i_RowDirection, string i_FromPosition, List<string> i_OptionalMoves)
+        private void CheckForwardMoves(int i_Row, int i_Col, int i_RowDirection, string i_FromPosition, List<string> i_OptionalMoves)
         {
-            int nextRow = row + i_RowDirection;
-            int leftCol = col - 1;
-            int rightCol = col + 1;
+            int nextRow = i_Row + i_RowDirection;
+            int leftCol = i_Col - 1;
+            int rightCol = i_Col + 1;
 
             if (IsValidPosition(nextRow, leftCol) && m_Board.GetPieceAt(nextRow, leftCol) == ePieceType.None)
             {
@@ -73,11 +74,11 @@ namespace CheckersLibrary
             }
         }
 
-        private void CheckBackwardMoves(int row, int col, int i_RowDirection, string i_FromPosition, List<string> i_OptionalMoves)
+        private void CheckBackwardMoves(int i_Row, int i_Col, int i_RowDirection, string i_FromPosition, List<string> i_OptionalMoves)
         {
-            int behindRow = row - i_RowDirection;
-            int leftCol = col - 1;
-            int rightCol = col + 1;
+            int behindRow = i_Row - i_RowDirection;
+            int leftCol = i_Col - 1;
+            int rightCol = i_Col + 1;
 
             if (IsValidPosition(behindRow, leftCol) && m_Board.GetPieceAt(behindRow, leftCol) == ePieceType.None)
             {
@@ -228,6 +229,7 @@ namespace CheckersLibrary
             return optionalEats;
         }
 
+        // Here need to change i_LastMove from string to list of ints
         public bool HasMoreEatMoves(string i_LastMove, Board i_Board, ref List<string> i_EatMoves)
         {
             bool hasMoreEatMoves = false;
@@ -257,6 +259,7 @@ namespace CheckersLibrary
             return hasMoreEatMoves;
         }
 
+        // Here need to change i_Move from string to list of ints
         public void MakeMove(string i_Move, Board i_Board, bool i_IsEatingMove)
         {
             int fromRow = i_Move[0] - 'A';
@@ -289,6 +292,7 @@ namespace CheckersLibrary
             }
         }
 
+        // Here need to change i_Move from string to list of ints
         private string SelectMove(List<string> moves)
         {
             Random random = new Random();
