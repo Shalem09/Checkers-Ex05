@@ -312,7 +312,6 @@ namespace CheckersConsoleUI
                         {
                             PrintBoard(i_Player, input);
                             Console.WriteLine($"{i_Player.m_Name} ({i_Player.m_Symbol}), you have additional eat moves.");
-                            Console.WriteLine("Move looks like FROMROWfromcol>TOROWtocol:");
                             input = Console.ReadLine();
 
                             if (!ValidateInput(input))

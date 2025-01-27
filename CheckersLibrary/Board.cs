@@ -26,28 +26,115 @@ namespace CheckersLibrary
             int rows = Grid.GetLength(0);
             int cols = Grid.GetLength(1);
 
-            // Calculate the number of rows for each player's pieces
             int playerRows = rows == 6 ? 2 : rows == 8 ? 3 : 4;
 
             for (int row = 0; row < rows; row++)
             {
                 for (int col = 0; col < cols; col++)
                 {
+                    if(row == 0)
+                    {
+                        if(col ==1 || col == 7)
+                        {
+                            Grid[row, col] = ePieceType.O;
+
+                        }
+                        else if(col == 5)
+                        {
+                            Grid[row, col] = ePieceType.K;
+                        }
+                        else
+                        {
+                            Grid[row, col] = ePieceType.None;
+
+                        }
+                    }
+                    else if(row == 1 && col == 0)
+                    {
+
+                        Grid[row, col] = ePieceType.O;
+
+                    }
+                    else if(row == 2 && (col == 3 || col ==5))
+                    {
+                        Grid[row, col] = ePieceType.O;
+
+                    }
+                    else if(row == 3)
+                    {
+                        if(col == 0)
+                        {
+                            Grid[row, col] = ePieceType.X;
+
+                        }
+                        else if(col == 2)
+                        {
+                            Grid[row, col] = ePieceType.O;
+
+                        }
+                        else
+                        {
+                            Grid[row, col] = ePieceType.None;
+
+                        }
+
+                    }
+                    else if(row == 4)
+                    {
+                        if (col == 5)
+                        {
+                            Grid[row, col] = ePieceType.O;
+                        }
+                        else if (col == 7)
+                        {
+                            Grid[row, col] = ePieceType.X;
+                        }
+                        else
+                        {
+                            Grid[row, col] = ePieceType.None;
+                        }
+
+                    }
+                    else if(row == 5 && (col == 0 || col == 6))
+                    {
+                        Grid[row, col] = ePieceType.X;
+
+                    }
+                    else if(row == 6 && col == 5)
+                    {
+                        Grid[row, col] = ePieceType.X;
+
+                    }
+                    else if(row == 7)
+                    {
+                        if(col % 2 == 0)
+                        {
+                            Grid[row, col] = ePieceType.X;
+                        }
+                        else
+                        {
+                            Grid[row, col] = ePieceType.None;
+
+                        }
+                    }
+                    else
+                    {
+                        Grid[row, col] = ePieceType.None;
+                    }
+                    /*
                     if (row < playerRows && (row + col) % 2 == 1)
                     {
-                        // Top rows for player O
                         Grid[row, col] = ePieceType.O;
                     }
                     else if (row >= rows - playerRows && (row + col) % 2 == 1)
                     {
-                        // Bottom rows for player X
                         Grid[row, col] = ePieceType.X;
                     }
                     else
                     {
-                        // Empty middle rows or invalid positions
                         Grid[row, col] = ePieceType.None;
                     }
+                    */
                 }
             }
         }

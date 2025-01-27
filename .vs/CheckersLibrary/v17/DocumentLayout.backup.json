@@ -3,19 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}|CheckersConsoleUI\\CheckersConsoleUI.csproj|C:\\Users\\robix\\source\\repos\\CheckersLibrary\\checkersconsoleui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}|CheckersConsoleUI\\CheckersConsoleUI.csproj|solutionrelative:checkersconsoleui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|C:\\Users\\robix\\source\\repos\\CheckersLibrary\\checkerslibrary\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|solutionrelative:checkerslibrary\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|c:\\users\\robix\\source\\repos\\checkerslibrary\\checkerslibrary\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|solutionrelative:checkerslibrary\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}|CheckersConsoleUI\\CheckersConsoleUI.csproj|c:\\users\\robix\\source\\repos\\checkerslibrary\\checkersconsoleui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}|CheckersConsoleUI\\CheckersConsoleUI.csproj|solutionrelative:checkersconsoleui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|C:\\Users\\robix\\source\\repos\\CheckersLibrary\\checkerslibrary\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|solutionrelative:checkerslibrary\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|c:\\users\\robix\\source\\repos\\checkerslibrary\\checkerslibrary\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|C:\\Users\\robix\\source\\repos\\CheckersLibrary\\checkerslibrary\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|solutionrelative:checkerslibrary\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,31 +46,30 @@
               "RelativeToolTip": "CheckersLibrary\\Player.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-26T22:41:08.372Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-01-26T22:41:08.372Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Board.cs",
               "DocumentMoniker": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersLibrary\\Board.cs",
               "RelativeDocumentMoniker": "CheckersLibrary\\Board.cs",
               "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersLibrary\\Board.cs",
               "RelativeToolTip": "CheckersLibrary\\Board.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAA3AAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAArwGYAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T19:45:10.564Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersConsoleUI\\Program.cs",
               "RelativeDocumentMoniker": "CheckersConsoleUI\\Program.cs",
               "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersConsoleUI\\Program.cs",
               "RelativeToolTip": "CheckersConsoleUI\\Program.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAMwCQAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAC4BAAAAAAAAAAAMwDcBAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T12:12:53.61Z",
               "EditorCaption": ""
@@ -83,7 +82,7 @@
               "RelativeDocumentMoniker": "CheckersLibrary\\Game.cs",
               "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersLibrary\\Game.cs",
               "RelativeToolTip": "CheckersLibrary\\Game.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAhwIwAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAL0AAAAAAAAAAAArwOYAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-26T12:03:37.239Z",
               "EditorCaption": ""

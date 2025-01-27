@@ -265,7 +265,7 @@ namespace CheckersLibrary
             int toCol = i_Move[4] - 'a';
             ePieceType newPieceType = ePieceType.None;
 
-            if (toRow == i_Board.Grid.GetLength(0))
+            if (toRow == i_Board.Grid.GetLength(0) - 1)
             {
                 newPieceType = ePieceType.U;
             }
