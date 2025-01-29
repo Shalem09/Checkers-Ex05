@@ -8,3 +8,13 @@ C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\Checkers
 C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\Checkers.EB8EF987.Up2Date
 C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.exe
 C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.pdb
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\bin\Debug\CheckersConsoleUI.exe.config
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\bin\Debug\CheckersConsoleUI.exe
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\bin\Debug\CheckersConsoleUI.pdb
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\bin\Debug\CheckersLibrary.dll
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\bin\Debug\CheckersLibrary.pdb
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.AssemblyReference.cache
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CopyComplete
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.exe
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.pdb

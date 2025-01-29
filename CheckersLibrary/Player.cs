@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace CheckersLibrary
 {
-
     public class Player
     {
         public string m_Name { get; private set; }

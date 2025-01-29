@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -10,26 +10,28 @@ namespace CheckersLibrary
 {
     public class Game
     {
-        public Board m_Board { get; private set; }
+        public Board m_Board { get; set; }
         public List<Player> m_Players { get; private set; }
         public Player m_Quitter { get; private set; } 
         public bool m_IsGameOver { get; private set; }
+        private int m_BoardSize;
 
-        public Game()
+        public Game(int i_BoardSize)
         {
+            m_BoardSize = i_BoardSize;
             m_Players = new List<Player>(2);
         }
 
-        public void ChangeGameOverState(Player quitter)
+        public void ChangeGameOverState(Player i_Quitter)
         {
             m_IsGameOver = !m_IsGameOver;
-            m_Quitter = quitter;
+            m_Quitter = i_Quitter;
         }
 
         public void InitializeGame(int i_BoardSize, string i_Player1Name, string i_Player2Name)
         {
             m_Board = new Board();
-            m_Board.SetBoard(i_BoardSize);
+            m_Board.SetBoard(m_BoardSize);
 
             Player player1 = new Player();
             player1.SetName(i_Player1Name);

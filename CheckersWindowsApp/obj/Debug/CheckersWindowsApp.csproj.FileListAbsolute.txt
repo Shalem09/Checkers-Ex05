@@ -1,0 +1,10 @@
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.AssemblyReference.cache
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormGrid.resources
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.Properties.Resources.resources
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.GenerateResource.cache
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.CoreCompileInputs.cache
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\bin\Debug\CheckersWindowsApp.exe
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\bin\Debug\CheckersWindowsApp.pdb
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormSettings.resources
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.exe
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.pdb

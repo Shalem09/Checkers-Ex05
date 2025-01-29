@@ -101,7 +101,7 @@ namespace CheckersConsoleUI
             PrintScoreBoard();
         }
 
-        private static void InitializeGame()
+        private static void InitializeGame()//Ignore 
         {
             int boardSize = getBoardSizeFromMenu();
 
@@ -110,7 +110,7 @@ namespace CheckersConsoleUI
 
             string player2Name = getPlayerOrComputer();
 
-            s_Game = new Game();
+            //s_Game = new Game();
             s_Game.InitializeGame(boardSize, player1Name, player2Name);
         }
 
