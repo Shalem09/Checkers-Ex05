@@ -13,7 +13,7 @@ namespace CheckersWindowsApp
     {
         public int BoardSize { get; private set; } = 8;
         public string Player1Name => textBoxFirstPlayer.Text;
-        public string Player2Name => checkBoxSecondPlayer.Checked ? "Computer" : textBoxSecondPlayer.Text;
+        public string Player2Name => checkBoxSecondPlayer.Checked ? textBoxSecondPlayer.Text : "Computer";
         public bool IsPlayer2Computer => checkBoxSecondPlayer.Checked;
 
 
@@ -26,7 +26,7 @@ namespace CheckersWindowsApp
 
         private void InitializeDefaults()
         {
-            textBoxSecondPlayer.Text = "[Computer]";
+            //textBoxSecondPlayer.Text = "[Computer]";
             textBoxSecondPlayer.ForeColor = Color.Gray;
             textBoxSecondPlayer.Enabled = false;
             radioButton8x8.Checked = true;
@@ -70,7 +70,10 @@ namespace CheckersWindowsApp
         {
             if (checkBoxSecondPlayer.Checked)
             {
-                textBoxSecondPlayer.Text = "";
+                if (string.IsNullOrWhiteSpace(textBoxSecondPlayer.Text) || textBoxSecondPlayer.Text == "[Computer]")
+                {
+                    textBoxSecondPlayer.Text = "";
+                }
                 textBoxSecondPlayer.ForeColor = Color.Black;
                 textBoxSecondPlayer.Enabled = true;
             }

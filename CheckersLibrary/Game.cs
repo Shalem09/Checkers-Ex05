@@ -60,6 +60,7 @@ namespace CheckersLibrary
 
         public void RestartGame()
         {
+            //we need to updte the score
             int boardSize = m_Board.Grid.GetLength(0);
             m_Board = new Board();
             m_Board.SetBoard(boardSize);

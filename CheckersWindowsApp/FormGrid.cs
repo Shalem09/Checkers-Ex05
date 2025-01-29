@@ -16,6 +16,10 @@ namespace CheckersWindowsApp
         private string m_player2Name;
         private int player1Score = 0;
         private int player2Score = 0;
+        private Button selectedButton = null; // שומר את הכפתור שנבחר (הכלי שזז)
+        private bool isFirstClick = true; // האם זו הלחיצה הראשונה?
+        private int currentPlayer = 0; // 0 - שחקן ראשון (X), 1 - שחקן שני (O)
+
 
         public FormGrid(int i_size, string i_player1Name, string i_player2Name, bool i_IsPlayer2Computer)
         {
@@ -38,7 +42,7 @@ namespace CheckersWindowsApp
 
            
             player1_label.Text = $"{m_player1Name} - Score: {player1Score}";
-            player2_label.Text = $"{m_player2Name} -Score: {player2Score}";
+            player2_label.Text = $"{m_player2Name} - Score: {player2Score}";
 
             player1_label.Location = new Point(margin, 10);
             player2_label.Location = new Point(ClientSize.Width - player2_label.Width - margin, 10);
@@ -100,31 +104,101 @@ namespace CheckersWindowsApp
             }
         }
 
+        //private void button_Click(object sender, EventArgs e)
+        //{
+        //    Button clickedButton = sender as Button;
+        //    if (clickedButton == null) return;
+
+        //    // Toggle the color of the clicked button
+        //    if (clickedButton.BackColor == Color.White)
+        //    {
+        //        clickedButton.BackColor = Color.FromArgb(37, 179, 255);
+        //    }
+        //    else
+        //    {
+        //        clickedButton.BackColor = Color.White;
+        //    }
+
+        //    // Update all other buttons based on the click event
+        //    foreach (Button btn in allButtons)
+        //    {
+        //        // אם עוד כפתור נלחץ אז מפעילם את המתודה של בדיקה
+
+
+        //    }
+
+        //    clickedButton.Click -= button_Click;
+        //    clickedButton.Click += button_SecondClick;
+        //}
+
         private void button_Click(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
             if (clickedButton == null) return;
 
-            // Toggle the color of the clicked button
-            if (clickedButton.BackColor == Color.White)
+            if (isFirstClick) // בחירת כלי
             {
-                clickedButton.BackColor = Color.FromArgb(37, 179, 255);
+                if (clickedButton.Text == "X" && currentPlayer == 0 ||
+                    clickedButton.Text == "O" && currentPlayer == 1)
+                {
+                    selectedButton = clickedButton;
+                    clickedButton.BackColor = Color.LightBlue; // סימון בחירה
+                    isFirstClick = false;
+                }
             }
-            else
+            else // בחירת משבצת יעד
             {
-                clickedButton.BackColor = Color.White;
-            }
+                Point fromPos = (Point)selectedButton.Tag;
+                Point toPos = (Point)clickedButton.Tag;
 
-            // Update all other buttons based on the click event
-            foreach (Button btn in allButtons)
+                bool isEatingMove = game.GetOptionalEatMoves(game.m_Board, selectedButton.Text[0]).Contains($"{fromPos.X}{fromPos.Y}>{toPos.X}{toPos.Y}");
+
+                if (game.GetOptionalMoves(game.m_Board, selectedButton.Text[0]).Contains($"{fromPos.X}{fromPos.Y}>{toPos.X}{toPos.Y}") ||
+                    isEatingMove)
+                {
+                    game.MakeMove($"{fromPos.X}{fromPos.Y}>{toPos.X}{toPos.Y}", game.m_Board, isEatingMove);
+                    UpdateBoardUI();
+                    currentPlayer = 1 - currentPlayer; // החלפת תור
+                }
+
+                selectedButton.BackColor = Color.White; // ניקוי סימון
+                selectedButton = null;
+                isFirstClick = true;
+            }
+        }
+
+        private void UpdateBoardUI()
+        {
+            for (int row = 0; row < m_boardSize; row++)
             {
-                // אם עוד כפתור נלחץ אז מפעילם את המתודה של בדיקה
+                for (int col = 0; col < m_boardSize; col++)
+                {
+                    ePieceType piece = game.m_Board.GetPieceAt(row, col);
 
-                
+                    if (piece == ePieceType.X)
+                        boardButtons[row, col].Text = "X";
+                    else if (piece == ePieceType.O)
+                        boardButtons[row, col].Text = "O";
+                    else if (piece == ePieceType.K)
+                        boardButtons[row, col].Text = "K";
+                    else if (piece == ePieceType.U)
+                        boardButtons[row, col].Text = "U";
+                    else
+                        boardButtons[row, col].Text = "";
+                }
             }
+        }
 
-            clickedButton.Click -= button_Click;
-            clickedButton.Click += button_SecondClick;
+        private void CheckForMoreEats(Point lastMove)
+        {
+            List<string> eatMoves = new List<string>();
+            if (game.HasMoreEatMovesNew(new List<int> { lastMove.X, lastMove.Y }, game.m_Board, ref eatMoves))
+            {
+                MessageBox.Show("You must continue eating!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                isFirstClick = false;
+                selectedButton = boardButtons[lastMove.X, lastMove.Y]; 
+                selectedButton.BackColor = Color.LightBlue;
+            }
         }
 
         private void button_SecondClick(object sender, EventArgs e)
