@@ -33,39 +33,41 @@ namespace CheckersWindowsApp
             this.player2_label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // player1_label
             // 
             this.player1_label.AutoSize = true;
-            this.player1_label.Location = new System.Drawing.Point(101, 32);
+            this.player1_label.Location = new System.Drawing.Point(135, 40);
+            this.player1_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.player1_label.Name = "player1_label";
-            this.player1_label.Size = new System.Drawing.Size(69, 20);
+            this.player1_label.Size = new System.Drawing.Size(97, 25);
             this.player1_label.TabIndex = 0;
             this.player1_label.Text = "Player 1:";
-            this.player1_label.Click += new System.EventHandler(this.player1_label_Click);
             // 
-            // label2
+            // player2_label
             // 
             this.player2_label.AutoSize = true;
-            this.player2_label.Location = new System.Drawing.Point(419, 32);
-            this.player2_label.Name = "label2";
-            this.player2_label.Size = new System.Drawing.Size(69, 20);
+            this.player2_label.Location = new System.Drawing.Point(559, 40);
+            this.player2_label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.player2_label.Name = "player2_label";
+            this.player2_label.Size = new System.Drawing.Size(97, 25);
             this.player2_label.TabIndex = 1;
             this.player2_label.Text = "Player 2:";
-            this.player2_label.Click += new System.EventHandler(this.player2_label_Click);
             // 
             // FormGrid
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 581);
+            this.ClientSize = new System.Drawing.Size(832, 726);
             this.Controls.Add(this.player2_label);
             this.Controls.Add(this.player1_label);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormGrid";
             this.Text = "FormGrid";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+
 
         #endregion
 

@@ -37,6 +37,7 @@ namespace CheckersLibrary
             player1.SetName(i_Player1Name);
             player1.SetSymbol('X');
 
+            i_Player2Name = RemoveBrackets(i_Player2Name);
             Player player2 = new Player();
             player2.SetName(i_Player2Name);
             player2.SetSymbol('O');
@@ -45,6 +46,16 @@ namespace CheckersLibrary
             m_Players.Add(player2);
             m_Quitter = null;
             m_IsGameOver = false;
+        }
+
+        public string RemoveBrackets(string i_String)
+        {
+            if (i_String[0] == '[')
+            {
+                i_String = i_String.Substring(1, 8);
+            }
+
+            return i_String;
         }
 
         public void RestartGame()
@@ -260,6 +271,38 @@ namespace CheckersLibrary
 
             return hasMoreEatMoves;
         }
+
+        public bool HasMoreEatMovesNew(List<int> i_LastMove, Board i_Board, ref List<string> i_EatMoves)
+        {
+            bool hasMoreEatMoves = false;
+            i_EatMoves.Clear();
+            int fromRow = i_LastMove[0];
+            int fromCol = i_LastMove[1];
+            int toRow = i_LastMove[2];
+            int toCol = i_LastMove[3];
+            string toPosition = toRow.ToString() + toCol.ToString();
+
+            char pieceSymbol = (char)i_Board.GetPieceAt(fromRow, fromCol);
+
+            List<string> eatMovesTotal = GetOptionalEatMoves(i_Board, pieceSymbol);
+            List<string> eatMoves = new List<string>();
+
+            foreach (string move in eatMovesTotal)
+            {
+                if (move.StartsWith(toPosition))
+                {
+                    i_EatMoves.Add(move);
+                }
+            }
+
+            if (i_EatMoves.Count > 0)
+            {
+                hasMoreEatMoves = true;
+            }
+
+            return hasMoreEatMoves;
+        }
+
 
         // Here need to change i_Move from string to list of ints
         public void MakeMove(string i_Move, Board i_Board, bool i_IsEatingMove)

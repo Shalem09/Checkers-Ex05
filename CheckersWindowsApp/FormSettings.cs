@@ -12,9 +12,9 @@ namespace CheckersWindowsApp
     public partial class FormSettings : Form
     {
         public int BoardSize { get; private set; } = 8;
-        public string Player1Name => Player1_TextBox.Text;
-        public string Player2Name => Player2_checkBox.Checked ? "Computer" : Player2_TextBox.Text;
-        public bool IsPlayer2Computer => Player2_checkBox.Checked;
+        public string Player1Name => textBoxFirstPlayer.Text;
+        public string Player2Name => checkBoxSecondPlayer.Checked ? "Computer" : textBoxSecondPlayer.Text;
+        public bool IsPlayer2Computer => checkBoxSecondPlayer.Checked;
 
 
 
@@ -26,23 +26,13 @@ namespace CheckersWindowsApp
 
         private void InitializeDefaults()
         {
-            Player2_TextBox.Text = "[Computer]";
-            Player2_TextBox.ForeColor = Color.Gray;
-            Player2_TextBox.Enabled = false;
+            textBoxSecondPlayer.Text = "[Computer]";
+            textBoxSecondPlayer.ForeColor = Color.Gray;
+            textBoxSecondPlayer.Enabled = false;
             radioButton8x8.Checked = true;
         }
 
-        private void radioButton6x6_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBoardSize();
-        }
-
-        private void radioButton8x8_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBoardSize();
-        }
-
-        private void radioButton10x10_CheckedChanged(object sender, EventArgs e)
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
             CheckBoardSize();
         }
@@ -63,81 +53,51 @@ namespace CheckersWindowsApp
             }
         }
 
-        private void OpenGameBoard()
+        private void openGameBoard()
         {
             FormGrid gameBoard = new FormGrid(BoardSize, Player1Name, Player2Name, IsPlayer2Computer);
             gameBoard.Show();
-            this.Hide(); 
-        }
-
-        private void boardSizeGroupBox_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Player1_TextBox_TextChanged(object sender, EventArgs e)
-        {
-
+            Hide(); 
         }
 
         private void done_button_Click(object sender, EventArgs e)
         {
             CheckBoardSize();
-            OpenGameBoard();
+            openGameBoard();
         }
 
         private void Player2_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (Player2_checkBox.Checked)
+            if (checkBoxSecondPlayer.Checked)
             {
-                Player2_TextBox.Text = "";
-                Player2_TextBox.ForeColor = Color.Black;
-                Player2_TextBox.Enabled = true;
+                textBoxSecondPlayer.Text = "";
+                textBoxSecondPlayer.ForeColor = Color.Black;
+                textBoxSecondPlayer.Enabled = true;
             }
             else
             {
-                Player2_TextBox.Text = "[Computer]";
-                Player2_TextBox.ForeColor = Color.Gray;
-                Player2_TextBox.Enabled = false;
+                textBoxSecondPlayer.Text = "[Computer]";
+                textBoxSecondPlayer.ForeColor = Color.Gray;
+                textBoxSecondPlayer.Enabled = false;
             }
-        }
-
-        private void Player2_TextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void Player2_TextBox_Enter(object sender, EventArgs e)
         {
-            if (Player2_TextBox.Text == "[Computer]")
+            if (textBoxSecondPlayer.Text == "[Computer]")
             {
-                Player2_TextBox.Text = "";
-                Player2_TextBox.ForeColor = Color.Black;
+                textBoxSecondPlayer.Text = "";
+                textBoxSecondPlayer.ForeColor = Color.Black;
             }
         }
 
         private void Player2_TextBox_Leave(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(Player2_TextBox.Text))
+            if (string.IsNullOrWhiteSpace(textBoxSecondPlayer.Text))
             {
-                Player2_TextBox.Text = "[Computer]";
-                Player2_TextBox.ForeColor = Color.Gray;
+                textBoxSecondPlayer.Text = "[Computer]";
+                textBoxSecondPlayer.ForeColor = Color.Gray;
             }
-        }
-
-        private void player1_label_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void players_label_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FormSettings_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
