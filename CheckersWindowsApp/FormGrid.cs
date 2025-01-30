@@ -13,11 +13,11 @@ namespace CheckersWindowsApp
         private readonly List<Button> r_AllButtons = new List<Button>();
         private readonly int r_boardSize; 
         private Game game;
-        private readonly Player r_FirstPlayer;
-        private readonly Player r_SecondPlayer;
+        private readonly Player r_FirstPlayer = new Player();
+        private readonly Player r_SecondPlayer = new Player();
+        private Player currentPlayer = new Player();
         private Button selectedButton = null;
         private bool isFirstClick = true;
-        private int currentPlayer = 0;
 
 
         public FormGrid(int i_size, string i_player1Name, string i_player2Name, bool i_IsPlayer2Computer)
@@ -25,7 +25,9 @@ namespace CheckersWindowsApp
             InitializeComponent();
             r_boardSize = i_size;
             r_FirstPlayer.SetName(i_player1Name);
+            r_FirstPlayer.SetSymbol('X');
             r_SecondPlayer.SetName(i_player2Name);
+            r_SecondPlayer.SetSymbol('O');
             Text = "Damka"; 
             InitializeBoard();
             InitializeGame();
@@ -51,6 +53,7 @@ namespace CheckersWindowsApp
         {
             game = new Game(r_boardSize);
             game.InitializeGame(r_boardSize, r_FirstPlayer.m_Name, r_SecondPlayer.m_Name);
+            currentPlayer = r_FirstPlayer;
         }
 
         private void CreateBoard(int size)
@@ -110,8 +113,8 @@ namespace CheckersWindowsApp
 
             if (isFirstClick)
             {
-                if (clickedButton.Text == "X" && currentPlayer == 0 ||
-                    clickedButton.Text == "O" && currentPlayer == 1)
+                if (clickedButton.Text == "X" && currentPlayer.m_Symbol == 'X'||
+                    clickedButton.Text == "O" && currentPlayer.m_Symbol == 'O')
                 {
                     selectedButton = clickedButton;
                     clickedButton.BackColor = Color.LightBlue;
@@ -123,7 +126,6 @@ namespace CheckersWindowsApp
                 Point fromPos = (Point)selectedButton.Tag;
                 Point toPos = (Point)clickedButton.Tag;
              
-
                 List<int> moveMade = new List<int>
                 {
                     fromPos.X, fromPos.Y, toPos.X, toPos.Y,
@@ -131,9 +133,15 @@ namespace CheckersWindowsApp
 
                 makeMove(moveMade, clickedButton);
 
-                selectedButton.BackColor = Color.White;
+                if (selectedButton != null)
+                {
+                    selectedButton.BackColor = Color.White;
+                }
+
                 selectedButton = null;
                 isFirstClick = true;
+
+                GameProcess();
             }
         }
 
@@ -170,12 +178,18 @@ namespace CheckersWindowsApp
                 game.MakeMoveNew(moveMade, game.m_Board, isEatingMove);
                 UpdateBoardUI();
 
+                if (IsGameOver())
+                {
+                    EndGame();
+                }
+
                 if (isEatingMove)
                 {
                     Point newPos = new Point(moveMade[2], moveMade[3]);
                     List<List<int>> furtherEatingMoves = game.GetOptionalEatMovesNew(game.m_Board, i_ClickedButton.Text[0]);
 
                     bool hasFurtherEatingMove = false;
+
                     foreach (List<int> move in furtherEatingMoves)
                     {
                         if (move[0] == newPos.X && move[1] == newPos.Y)
@@ -187,20 +201,21 @@ namespace CheckersWindowsApp
 
                     if (!hasFurtherEatingMove)
                     {
-                        currentPlayer = 1 - currentPlayer;
-                        selectedButton.BackColor = Color.White;
+                        currentPlayer = currentPlayer == r_SecondPlayer ? r_FirstPlayer : r_SecondPlayer;
+                        //selectedButton.BackColor = Color.White;
                     }
                     else
                     {
                         selectedButton.BackColor = Color.White;
                         i_ClickedButton.BackColor = Color.LightBlue;
+                        selectedButton = i_ClickedButton;
                         isFirstClick = false;
                         return;
                     }
                 }
                 else
                 {
-                    currentPlayer = 1 - currentPlayer;
+                    currentPlayer = currentPlayer == r_SecondPlayer ? r_FirstPlayer : r_SecondPlayer;
                 }
             }
             else if (!isErrorShown)
@@ -235,6 +250,68 @@ namespace CheckersWindowsApp
                 }
             }
         }
+
+        // ****************************************************
+
+        private void GameProcess()
+        {
+            if(currentPlayer.m_Name == "Computer")
+            {
+                game.MakeMoveForComputerNew(game.m_Board,r_SecondPlayer.m_Symbol);
+                currentPlayer = currentPlayer == r_SecondPlayer ? r_FirstPlayer : r_SecondPlayer;
+            }
+
+
+            UpdateBoardUI(); // הצגת הלוח למשתמש
+
+            if (IsGameOver())
+            {
+                EndGame();
+                return;
+            }
+
+            isFirstClick = true; // מאפסים את הבחירה כך שהשחקן יוכל לבחור כלי חדש
+        }
+
+        private bool IsGameOver()
+        {
+            bool isGameOver = true; // נניח שהמשחק נגמר כברירת מחדל
+            ePieceType piece = ePieceType.None;
+
+            for (int i = 0; i < r_boardSize; i++)
+            {
+                for (int j = 0; j < r_boardSize; j++)
+                {
+                    // בדיקה האם אין יותר שחקנים על הלוח
+                    piece = game.m_Board.GetPieceAt(i, j);
+
+                    if  (piece == ePieceType.X || piece == ePieceType.K)
+                    {
+                        isGameOver = false; // יש עדיין שחקן X, המשחק לא נגמר
+                    }
+                    else if (piece == ePieceType.O || piece == ePieceType.U)
+                    {
+                        isGameOver = false; // יש עדיין שחקן O, המשחק לא נגמר
+                    }
+
+                    // האם אין יותר צעדים חוקיים לאחד השחקנים
+                    
+                    // מצב של תיקו
+                }
+            }
+
+            return isGameOver; // מחזירים את התוצאה בסוף
+        }
+
+
+        private void EndGame()
+        {
+            string winner = currentPlayer.m_Symbol == 'X' ? "O" : "X"; // השחקן השני הוא המנצח
+            MessageBox.Show($"Game Over! The winner is Player {winner}!", "Game Over");
+            // להציע משחק נוסף ולעדכן את הניקוד
+            Application.Exit(); // סוגר את המשחק
+        }
+
 
     }
 }

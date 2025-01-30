@@ -652,7 +652,7 @@ namespace CheckersLibrary
             }
             else
             {
-                Console.WriteLine($"Computer ({i_Symbol}) has no valid moves.");
+                //Console.WriteLine($"Computer ({i_Symbol}) has no valid moves.");
                 ChangeGameOverState(null);
             }
 
