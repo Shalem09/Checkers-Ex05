@@ -7,12 +7,8 @@
       "RelativeMoniker": "D:0:0:{3DD56165-0E32-4CF2-8B68-E7F163F913D6}|CheckersWindowsApp\\CheckersWindowsApp.csproj|solutionrelative:checkerswindowsapp\\formgrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3DD56165-0E32-4CF2-8B68-E7F163F913D6}|CheckersWindowsApp\\CheckersWindowsApp.csproj|c:\\users\\robix\\source\\repos\\checkerslibrary\\checkerswindowsapp\\formgrid.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3DD56165-0E32-4CF2-8B68-E7F163F913D6}|CheckersWindowsApp\\CheckersWindowsApp.csproj|solutionrelative:checkerswindowsapp\\formgrid.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3DD56165-0E32-4CF2-8B68-E7F163F913D6}|CheckersWindowsApp\\CheckersWindowsApp.csproj|c:\\users\\robix\\source\\repos\\checkerslibrary\\checkerswindowsapp\\formgrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{3DD56165-0E32-4CF2-8B68-E7F163F913D6}|CheckersWindowsApp\\CheckersWindowsApp.csproj|solutionrelative:checkerswindowsapp\\formgrid.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|c:\\users\\robix\\source\\repos\\checkerslibrary\\checkerslibrary\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|solutionrelative:checkerslibrary\\game.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{400CB3F9-0338-4B79-B7B6-35067C621108}|CheckersLibrary\\CheckersLibrary.csproj|C:\\Users\\robix\\source\\repos\\CheckersLibrary\\checkerslibrary\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -39,27 +35,15 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FormGrid.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersWindowsApp\\FormGrid.Designer.cs",
-              "RelativeDocumentMoniker": "CheckersWindowsApp\\FormGrid.Designer.cs",
-              "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersWindowsApp\\FormGrid.Designer.cs",
-              "RelativeToolTip": "CheckersWindowsApp\\FormGrid.Designer.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAArwEUAAAAAAAAAAAAAAA==",
+              "Title": "Game.cs",
+              "DocumentMoniker": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersLibrary\\Game.cs",
+              "RelativeDocumentMoniker": "CheckersLibrary\\Game.cs",
+              "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersLibrary\\Game.cs",
+              "RelativeToolTip": "CheckersLibrary\\Game.cs",
+              "ViewState": "AgIAAKQBAAAAAAAAAAAMwK0BAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T14:50:32.211Z",
+              "WhenOpened": "2025-01-30T07:17:15.824Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FormGrid.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersWindowsApp\\FormGrid.cs",
-              "RelativeDocumentMoniker": "CheckersWindowsApp\\FormGrid.cs",
-              "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersWindowsApp\\FormGrid.cs [Design]",
-              "RelativeToolTip": "CheckersWindowsApp\\FormGrid.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-29T13:38:20.906Z",
-              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
@@ -69,14 +53,14 @@
               "RelativeDocumentMoniker": "CheckersWindowsApp\\FormGrid.cs",
               "ToolTip": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersWindowsApp\\FormGrid.cs",
               "RelativeToolTip": "CheckersWindowsApp\\FormGrid.cs",
-              "ViewState": "AgIAAGMAAAAAAAAAAAAMwGcAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAuwDAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-29T13:34:59.03Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\robix\\source\\repos\\CheckersLibrary\\CheckersLibrary\\Player.cs",
               "RelativeDocumentMoniker": "CheckersLibrary\\Player.cs",
