@@ -30,8 +30,8 @@ namespace CheckersWindowsApp
             r_SecondPlayer.SetName(i_player2Name);
             r_SecondPlayer.SetSymbol('O');
             Text = "Damka";
-            InitializeBoard();
             InitializeGame();
+            InitializeBoard();
             CreateBoard(r_boardSize);
         }
 
@@ -42,10 +42,16 @@ namespace CheckersWindowsApp
 
             ClientSize = new Size(r_boardSize * tileSize + margin * 2, r_boardSize * tileSize + margin * 2 + 50);
 
-
-            player1_label.Text = $"{r_FirstPlayer.m_Name} - Score: {r_FirstPlayer.m_Score}";
-            player2_label.Text = $"{r_SecondPlayer.m_Name} - Score: {r_SecondPlayer.m_Score}";
-
+            if (game != null)
+            {
+                player1_label.Text = $"{r_FirstPlayer.m_Name} - Score: {game.m_Players[0].m_Score}";
+                player2_label.Text = $"{r_SecondPlayer.m_Name} - Score: {game.m_Players[1].m_Score}";
+            }
+            else
+            {
+                player1_label.Text = $"{r_FirstPlayer.m_Name} - Score: 0";
+                player2_label.Text = $"{r_SecondPlayer.m_Name} - Score: 0";
+            }
             player1_label.Location = new Point(margin, 10);
             player2_label.Location = new Point(ClientSize.Width - player2_label.Width - margin, 10);
         }
@@ -326,7 +332,6 @@ namespace CheckersWindowsApp
             return winner;
         }
 
-
         private Player checkForValidatedMoves()
         {
             Player winner = null;
@@ -353,7 +358,6 @@ namespace CheckersWindowsApp
             return winner;
         }
 
-
         private static DialogResult firstPlayerWonMessageBox()
         {
             return MessageBox.Show($"Player 1 won!{Environment.NewLine} Another Round?", "Damka", MessageBoxButtons.YesNo,
@@ -374,6 +378,7 @@ namespace CheckersWindowsApp
 
         private void EndGame(Player i_Winner)
         {
+            InitializeBoard();
             DialogResult result;
 
             if (i_Winner == null)
