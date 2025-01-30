@@ -18,6 +18,7 @@ namespace CheckersWindowsApp
         private Player currentPlayer = new Player();
         private Button selectedButton = null;
         private bool isFirstClick = true;
+        
 
 
         public FormGrid(int i_size, string i_player1Name, string i_player2Name, bool i_IsPlayer2Computer)
@@ -89,7 +90,6 @@ namespace CheckersWindowsApp
                         button.BackColor = Color.White;
                     }
 
-
                     if (row < playerRows && (row + col) % 2 == 1)
                     {
                         button.Text = ePieceType.O.ToString();
@@ -113,8 +113,8 @@ namespace CheckersWindowsApp
 
             if (isFirstClick)
             {
-                if (clickedButton.Text == "X" && currentPlayer.m_Symbol == 'X'||
-                    clickedButton.Text == "O" && currentPlayer.m_Symbol == 'O')
+                if ((clickedButton.Text == "X" || clickedButton.Text == "K") && currentPlayer.m_Symbol == 'X'||
+                    (clickedButton.Text == "O" || clickedButton.Text == "U") && currentPlayer.m_Symbol == 'O')
                 {
                     selectedButton = clickedButton;
                     clickedButton.BackColor = Color.LightBlue;
@@ -275,8 +275,32 @@ namespace CheckersWindowsApp
 
         private bool IsGameOver()
         {
-            bool isGameOver = true; // נניח שהמשחק נגמר כברירת מחדל
+            bool isGameOver = false; // נניח שהמשחק נגמר כברירת מחדל
             ePieceType piece = ePieceType.None;
+            List<List<int>> movesForO = game.GetOptionalEatMovesNew(game.m_Board, 'O');
+            movesForO.AddRange(game.GetOptionalMovesNew(game.m_Board, 'O'));
+            List<List<int>> movesForX = game.GetOptionalEatMovesNew(game.m_Board, 'X');
+            movesForX.AddRange(game.GetOptionalMovesNew(game.m_Board, 'X'));
+            int counterX = 0 , counterO = 0;
+
+            if (movesForO.Count == 0)
+            {
+                isGameOver = true;
+                MessageBox.Show($"Player 1 won!{Environment.NewLine} Another Round?", "Damka", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+            }
+            else if (movesForX.Count == 0)
+            {
+                isGameOver = true;
+                MessageBox.Show($"Player 2 won!{Environment.NewLine} Another Round?" , "Damka", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+            }
+            else if(movesForO.Count == 0 && movesForX.Count == 0)
+            {
+                isGameOver = true;
+                MessageBox.Show($"Tie!{Environment.NewLine} Another Round?" , "Damka", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+            }
 
             for (int i = 0; i < r_boardSize; i++)
             {
@@ -287,20 +311,30 @@ namespace CheckersWindowsApp
 
                     if  (piece == ePieceType.X || piece == ePieceType.K)
                     {
-                        isGameOver = false; // יש עדיין שחקן X, המשחק לא נגמר
+                        counterX++; // יש עדיין שחקן X, המשחק לא נגמר
                     }
                     else if (piece == ePieceType.O || piece == ePieceType.U)
                     {
-                        isGameOver = false; // יש עדיין שחקן O, המשחק לא נגמר
+                        counterO++; // יש עדיין שחקן O, המשחק לא נגמר
                     }
-
-                    // האם אין יותר צעדים חוקיים לאחד השחקנים
-                    
                     // מצב של תיקו
                 }
             }
 
-            return isGameOver; // מחזירים את התוצאה בסוף
+            if (counterO == 0)
+            {
+                isGameOver = true;
+                MessageBox.Show($"Player 1 won!{Environment.NewLine} Another Round?", "Damka", MessageBoxButtons.YesNo,
+                     MessageBoxIcon.Question);
+            }
+            else if (counterX == 0)
+            {
+                isGameOver = true;
+                MessageBox.Show($"Player 2 won!{Environment.NewLine} Another Round?", "Damka", MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+            }
+
+            return isGameOver;
         }
 
 

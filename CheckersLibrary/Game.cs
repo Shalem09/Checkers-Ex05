@@ -250,7 +250,7 @@ namespace CheckersLibrary
         private void InitializePieceTypes(char i_Symbol, out ePieceType o_PlayerPiece, out ePieceType o_PlayerKing,
                                   out ePieceType o_OpponentPiece, out ePieceType o_OpponentKing, out int o_RowDirection)
         {
-            if (i_Symbol == 'X')
+            if (i_Symbol == 'X' || i_Symbol == 'K')
             {
                 o_PlayerPiece = ePieceType.X;
                 o_PlayerKing = ePieceType.K;
@@ -564,11 +564,11 @@ namespace CheckersLibrary
             int toCol = i_Move[3];
             ePieceType newPieceType = ePieceType.None;
 
-            if (toRow == i_Board.Grid.GetLength(0) - 1)
+            if (toRow == i_Board.Grid.GetLength(0) - 1 && i_Board.GetPieceAt(fromRow, fromCol) == ePieceType.O)
             {
                 newPieceType = ePieceType.U;
             }
-            else if (toRow == 0)
+            else if (toRow == 0 && i_Board.GetPieceAt(fromRow,fromCol) == ePieceType.X)
             {
                 newPieceType = ePieceType.K;
             }
