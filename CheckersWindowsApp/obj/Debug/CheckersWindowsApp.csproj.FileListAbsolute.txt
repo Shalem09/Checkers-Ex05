@@ -26,3 +26,4 @@ C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\Checker
 C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\Checkers.2D947371.Up2Date
 C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.exe
 C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.pdb
+C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormColor.resources

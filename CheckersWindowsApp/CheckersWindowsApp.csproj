@@ -47,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormColor.Designer.cs">
+      <DependentUpon>FormColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormColor.resx">
+      <DependentUpon>FormColor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSettings.resx">
       <DependentUpon>FormSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +102,12 @@
       <Project>{400cb3f9-0338-4b79-b7b6-35067c621108}</Project>
       <Name>CheckersLibrary</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rgbSpectrum.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-color-wheel-20.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

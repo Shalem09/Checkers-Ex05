@@ -20,7 +20,8 @@ namespace CheckersWindowsApp
 
 
 
-        public FormGrid(int i_size, string i_player1Name, string i_player2Name, bool i_IsPlayer2Computer)
+        public FormGrid(int i_size, string i_player1Name, string i_player2Name, bool i_IsPlayer2Computer,
+            Color i_FirstPlayerLabelColor, Color i_SecondPlayerLabelColor)
         {
             InitializeComponent();
             r_boardSize = i_size;
@@ -32,6 +33,8 @@ namespace CheckersWindowsApp
             InitializeGame();
             InitializeBoard();
             CreateBoard(r_boardSize);
+            labelFirstPlayer.ForeColor = i_FirstPlayerLabelColor;
+            labelSecondPlayer.ForeColor = i_SecondPlayerLabelColor;
         }
 
         private void InitializeBoard()
@@ -43,16 +46,16 @@ namespace CheckersWindowsApp
 
             if (game != null)
             {
-                player1_label.Text = $"{r_FirstPlayer.m_Name} - Score: {game.m_Players[0].m_Score}";
-                player2_label.Text = $"{r_SecondPlayer.m_Name} - Score: {game.m_Players[1].m_Score}";
+                labelFirstPlayer.Text = $"{r_FirstPlayer.m_Name} - Score: {game.m_Players[0].m_Score}";
+                labelSecondPlayer.Text = $"{r_SecondPlayer.m_Name} - Score: {game.m_Players[1].m_Score}";
             }
             else
             {
-                player1_label.Text = $"{r_FirstPlayer.m_Name} - Score: 0";
-                player2_label.Text = $"{r_SecondPlayer.m_Name} - Score: 0";
+                labelFirstPlayer.Text = $"{r_FirstPlayer.m_Name} - Score: 0";
+                labelSecondPlayer.Text = $"{r_SecondPlayer.m_Name} - Score: 0";
             }
-            player1_label.Location = new Point(margin, 10);
-            player2_label.Location = new Point(ClientSize.Width - player2_label.Width - margin, 10);
+            labelFirstPlayer.Location = new Point(margin, 10);
+            labelSecondPlayer.Location = new Point(ClientSize.Width - labelSecondPlayer.Width - margin, 10);
         }
 
         private void InitializeGame()
@@ -75,6 +78,7 @@ namespace CheckersWindowsApp
                 for (int col = 0; col < size; col++)
                 {
                     Button button = new Button();
+                    button.Font = new Font(button.Font.FontFamily, 15, FontStyle.Bold);
                     button.Width = buttonSize;
                     button.Height = buttonSize;
                     button.Left = startX + col * buttonSize;
@@ -107,10 +111,24 @@ namespace CheckersWindowsApp
                     {
                         button.Text = "";
                     }
+
+                    setButtonSetTextColor(button);
                 }
             }
         }
 
+        private void setButtonSetTextColor(Button i_Button)
+        {
+            if(i_Button.Text == "O" || i_Button.Text == "U")
+            {
+                i_Button.ForeColor = FormSettings.m_secondPlayerLabelColor;
+            }
+
+            if (i_Button.Text == "X" || i_Button.Text == "K")
+            {
+                i_Button.ForeColor = FormSettings.m_firstPlayerLabelColor;
+            }
+        }
 
         // קליק ראשון - מבצע רגיל את הלוגיקה שהייתה בלחיצה ראשונה
         // בסיום מעדכן את כל הכפתורים הקיימים (אחרים ועצמו) שירשמו למתודת הקליק השני
@@ -286,6 +304,8 @@ namespace CheckersWindowsApp
                         m_BoardButtons[row, col].Text = "U";
                     else
                         m_BoardButtons[row, col].Text = "";
+
+                    setButtonSetTextColor(m_BoardButtons[row, col]);
                 }
             }
         }
@@ -442,6 +462,11 @@ namespace CheckersWindowsApp
             game.RestartGame();
             UpdateBoardUI();
             GameProcess();
+        }
+
+        private void FormGrid_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

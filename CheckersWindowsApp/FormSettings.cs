@@ -11,12 +11,13 @@ namespace CheckersWindowsApp
 {
     public partial class FormSettings : Form
     {
-        public int BoardSize { get; private set; } = 8;
-        public string Player1Name => textBoxFirstPlayer.Text;
-        public string Player2Name => checkBoxSecondPlayer.Checked ? textBoxSecondPlayer.Text : "Computer";
-        public bool IsPlayer2Computer => checkBoxSecondPlayer.Checked;
-
-
+        public int m_BoardSize { get; private set; } = 8;
+        public string m_Player1Name => textBoxFirstPlayer.Text;
+        public string m_Player2Name => checkBoxSecondPlayer.Checked ? textBoxSecondPlayer.Text : "Computer";
+        public bool m_IsPlayer2Computer => checkBoxSecondPlayer.Checked;
+        private Color m_backgroundColor { get; set; } = Color.White;
+        public static Color m_firstPlayerLabelColor { get; private set; } = Color.Black;
+        public static Color m_secondPlayerLabelColor { get; private set; } = Color.Black;
 
         public FormSettings()
         {
@@ -40,21 +41,29 @@ namespace CheckersWindowsApp
         {
             if (radioButton6x6.Checked)
             {
-                BoardSize = 6;
+                m_BoardSize = 6;
             }
             else if (radioButton8x8.Checked)
             {
-                BoardSize = 8;
+                m_BoardSize = 8;
             }
             else if (radioButton10x10.Checked)
             {
-                BoardSize = 10;
+                m_BoardSize = 10;
             }
         }
 
         private void openGameBoard()
         {
-            FormGrid gameBoard = new FormGrid(BoardSize, Player1Name, Player2Name, IsPlayer2Computer);
+            FormGrid gameBoard = new FormGrid(
+                m_BoardSize,
+                m_Player1Name,
+                m_Player2Name,
+                m_IsPlayer2Computer,
+                m_firstPlayerLabelColor,
+                m_secondPlayerLabelColor);
+
+            gameBoard.BackColor = m_backgroundColor;
             gameBoard.Show();
             Hide(); 
         }
@@ -84,22 +93,43 @@ namespace CheckersWindowsApp
             }
         }
 
-        private void Player2_TextBox_Enter(object sender, EventArgs e)
+        private void buttonBackgroundColor_Click(object sender, EventArgs e)
         {
-            if (textBoxSecondPlayer.Text == "[Computer]")
-            {
-                textBoxSecondPlayer.Text = "";
-                textBoxSecondPlayer.ForeColor = Color.Black;
-            }
+            FormColor colorChooseFrom = new FormColor();
+            colorChooseFrom.ColorChosen += onBackgroungColorChosen;
+
+            colorChooseFrom.ShowDialog();
         }
 
-        private void Player2_TextBox_Leave(object sender, EventArgs e)
+        private void onBackgroungColorChosen(Color chosenColor)
         {
-            if (string.IsNullOrWhiteSpace(textBoxSecondPlayer.Text))
-            {
-                textBoxSecondPlayer.Text = "[Computer]";
-                textBoxSecondPlayer.ForeColor = Color.Gray;
-            }
+            m_backgroundColor = chosenColor;
+        }
+
+        private void pictureBoxFirstPlayer_Click(object sender, EventArgs e)
+        {
+            FormColor colorChooseFrom = new FormColor();
+            colorChooseFrom.ColorChosen += onFirstLabelColorChosen;
+
+            colorChooseFrom.ShowDialog();
+        }
+
+        private void onFirstLabelColorChosen(Color chosenColor)
+        {
+            m_firstPlayerLabelColor = chosenColor;
+        }
+
+        private void pictureBoxSecondPlayer_Click(object sender, EventArgs e)
+        {
+            FormColor colorChooseFrom = new FormColor();
+            colorChooseFrom.ColorChosen += onSecondLabelColorChosen;
+
+            colorChooseFrom.ShowDialog();
+        }
+
+        private void onSecondLabelColorChosen(Color chosenColor)
+        {
+            m_secondPlayerLabelColor = chosenColor;
         }
     }
 }
