@@ -17,7 +17,6 @@ namespace CheckersWindowsApp
         private readonly Player r_SecondPlayer = new Player();
         private Player currentPlayer = new Player();
         private Button selectedButton = null;
-        private bool isFirstClick = true;
 
 
 
@@ -81,7 +80,7 @@ namespace CheckersWindowsApp
                     button.Left = startX + col * buttonSize;
                     button.Top = startY + row * buttonSize;
                     button.Tag = new Point(row, col);
-                    button.Click += button_Click;
+                    button.Click += button_FirstClick;
                     Controls.Add(button);
                     m_BoardButtons[row, col] = button;
                     r_AllButtons.Add(button);
@@ -112,25 +111,36 @@ namespace CheckersWindowsApp
             }
         }
 
-        private void button_Click(object sender, EventArgs e)
+
+        // קליק ראשון - מבצע רגיל את הלוגיקה שהייתה בלחיצה ראשונה
+        // בסיום מעדכן את כל הכפתורים הקיימים (אחרים ועצמו) שירשמו למתודת הקליק השני
+        private void button_FirstClick(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
-            if (clickedButton == null) return;
 
-            if (isFirstClick)
+            if ((clickedButton.Text == "X" || clickedButton.Text == "K") && currentPlayer.m_Symbol == 'X' ||
+                (clickedButton.Text == "O" || clickedButton.Text == "U") && currentPlayer.m_Symbol == 'O')
             {
-                if ((clickedButton.Text == "X" || clickedButton.Text == "K") && currentPlayer.m_Symbol == 'X' ||
-                    (clickedButton.Text == "O" || clickedButton.Text == "U") && currentPlayer.m_Symbol == 'O')
-                {
-                    selectedButton = clickedButton;
-                    clickedButton.BackColor = Color.LightBlue;
-                    isFirstClick = false;
-                }
+                selectedButton = clickedButton;
+                clickedButton.BackColor = Color.LightBlue;
             }
-            else
+
+            UpdateAllButtonsToSecondClick();
+        }
+
+        // קליק שני - מבצע רגיל את הלוגיקה שהייתה בלחיצה שניה
+        // בסיום מעדכן את כל הכפתורים הקיימים (אחרים ועצמו) שירשמו בחזרה למתודת הקליק הראשון
+        private void button_SecondClick(object sender, EventArgs e)
+        {
+            Button clickedButton = sender as Button;
+
+            if (selectedButton == null) return;
+
+            Point fromPos = (Point)selectedButton.Tag;
+            Point toPos = (Point)clickedButton.Tag;
+
+            if (fromPos != toPos)
             {
-                Point fromPos = (Point)selectedButton.Tag;
-                Point toPos = (Point)clickedButton.Tag;
 
                 List<int> moveMade = new List<int>
                 {
@@ -138,25 +148,53 @@ namespace CheckersWindowsApp
                 };
 
                 makeMove(moveMade, clickedButton);
+            }
 
-                if (selectedButton != null)
+            if (selectedButton != null)
+            {
+                selectedButton.BackColor = Color.White;
+            }
+
+            selectedButton = null;
+
+            GameProcess();
+
+            UpdateAllButtonsToFirstClick();
+        }
+        // מתודה שרושמת את כל הכפתורים הקיימים בלוח למתודת ה "קליק השני"
+        private void UpdateAllButtonsToSecondClick()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
                 {
-                    selectedButton.BackColor = Color.White;
+                    button.Click -= button_FirstClick;
+                    button.Click -= button_SecondClick;
+                    button.Click += button_SecondClick;
                 }
-
-                selectedButton = null;
-                isFirstClick = true;
-
-                GameProcess();
             }
         }
 
+
+        // מתודה שרושמת את כל הכפתורים הקיימים בלוח למתודת ה "קליק הראשון"
+        private void UpdateAllButtonsToFirstClick()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.Click -= button_SecondClick;
+                    button.Click -= button_FirstClick;
+                    button.Click += button_FirstClick;
+                }
+            }
+        }
         private void makeMove(List<int> moveMade, Button i_ClickedButton)
         {
             bool isMoveValid = false;
             bool isErrorShown = false;
 
-            List<List<int>> eatingMoves = game.GetOptionalEatMovesNew(game.m_Board, selectedButton.Text[0]);
+            List<List<int>> eatingMoves = game.GetOptionalEatMoves(game.m_Board, selectedButton.Text[0]);
             bool isEatingMove = game.ContainsMove(eatingMoves, moveMade);
 
             // Check if the player must eat
@@ -175,13 +213,13 @@ namespace CheckersWindowsApp
                 isMoveValid = true;
                 if (!isEatingMove)
                 {
-                    eatingMoves = game.GetOptionalMovesNew(game.m_Board, selectedButton.Text[0]);
+                    eatingMoves = game.GetOptionalMoves(game.m_Board, selectedButton.Text[0]);
                 }
             }
 
             if (game.ContainsMove(eatingMoves, moveMade) && isMoveValid)
             {
-                game.MakeMoveNew(moveMade, game.m_Board, isEatingMove);
+                game.MakeMove(moveMade, game.m_Board, isEatingMove);
                 UpdateBoardUI();
 
                 Player winner;
@@ -191,7 +229,7 @@ namespace CheckersWindowsApp
                 if (isEatingMove && !isGameOver)
                 {
                     Point newPos = new Point(moveMade[2], moveMade[3]);
-                    List<List<int>> furtherEatingMoves = game.GetOptionalEatMovesNew(game.m_Board, i_ClickedButton.Text[0]);
+                    List<List<int>> furtherEatingMoves = game.GetOptionalEatMoves(game.m_Board, i_ClickedButton.Text[0]);
 
                     foreach (List<int> move in furtherEatingMoves)
                     {
@@ -212,7 +250,6 @@ namespace CheckersWindowsApp
                     selectedButton.BackColor = Color.White;
                     i_ClickedButton.BackColor = Color.LightBlue;
                     selectedButton = i_ClickedButton;
-                    isFirstClick = false;
                 }
                 else
                 {
@@ -260,7 +297,7 @@ namespace CheckersWindowsApp
 
             if (isComputerTurn)
             {
-                game.MakeMoveForComputerNew(game.m_Board, r_SecondPlayer.m_Symbol);
+                game.MakeMoveForComputer(game.m_Board, r_SecondPlayer.m_Symbol);
                 currentPlayer = (currentPlayer == r_SecondPlayer) ? r_FirstPlayer : r_SecondPlayer;
             }
 
@@ -272,10 +309,6 @@ namespace CheckersWindowsApp
             if (isGameOver)
             {
                 EndGame(winner);
-            }
-            else
-            {
-                isFirstClick = true;
             }
         }
 
@@ -336,11 +369,11 @@ namespace CheckersWindowsApp
         {
             Player winner = null;
 
-            List<List<int>> movesForO = game.GetOptionalEatMovesNew(game.m_Board, 'O');
-            movesForO.AddRange(game.GetOptionalMovesNew(game.m_Board, 'O'));
+            List<List<int>> movesForO = game.GetOptionalEatMoves(game.m_Board, 'O');
+            movesForO.AddRange(game.GetOptionalMoves(game.m_Board, 'O'));
 
-            List<List<int>> movesForX = game.GetOptionalEatMovesNew(game.m_Board, 'X');
-            movesForX.AddRange(game.GetOptionalMovesNew(game.m_Board, 'X'));
+            List<List<int>> movesForX = game.GetOptionalEatMoves(game.m_Board, 'X');
+            movesForX.AddRange(game.GetOptionalMoves(game.m_Board, 'X'));
 
             if (movesForO.Count == 0 && movesForX.Count == 0)
             {

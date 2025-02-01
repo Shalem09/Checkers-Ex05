@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33027.164
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckersLibrary", "CheckersLibrary\CheckersLibrary.csproj", "{400CB3F9-0338-4B79-B7B6-35067C621108}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckersConsoleUI", "CheckersConsoleUI\CheckersConsoleUI.csproj", "{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckersWindowsApp", "CheckersWindowsApp\CheckersWindowsApp.csproj", "{3DD56165-0E32-4CF2-8B68-E7F163F913D6}"
 EndProject
@@ -19,10 +17,6 @@ Global
 		{400CB3F9-0338-4B79-B7B6-35067C621108}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{400CB3F9-0338-4B79-B7B6-35067C621108}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{400CB3F9-0338-4B79-B7B6-35067C621108}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0F7F8DAC-EC0D-4BD1-8FE2-63CA41490DA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3DD56165-0E32-4CF2-8B68-E7F163F913D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3DD56165-0E32-4CF2-8B68-E7F163F913D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DD56165-0E32-4CF2-8B68-E7F163F913D6}.Release|Any CPU.ActiveCfg = Release|Any CPU

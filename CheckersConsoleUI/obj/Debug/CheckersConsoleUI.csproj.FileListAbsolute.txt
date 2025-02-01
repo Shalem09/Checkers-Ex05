@@ -1,12 +1,4 @@
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\bin\Debug\CheckersConsoleUI.exe.config
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\bin\Debug\CheckersConsoleUI.exe
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\bin\Debug\CheckersConsoleUI.pdb
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\bin\Debug\CheckersLibrary.dll
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\bin\Debug\CheckersLibrary.pdb
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.AssemblyReference.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CoreCompileInputs.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\Checkers.EB8EF987.Up2Date
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.exe
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.pdb
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.AssemblyReference.cache
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CoreCompileInputs.cache
+C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.AssemblyReference.cache
+C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CoreCompileInputs.cache

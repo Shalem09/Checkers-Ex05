@@ -26,10 +26,9 @@ namespace CheckersWindowsApp
 
         private void InitializeDefaults()
         {
-            //textBoxSecondPlayer.Text = "[Computer]";
             textBoxSecondPlayer.ForeColor = Color.Gray;
             textBoxSecondPlayer.Enabled = false;
-            radioButton8x8.Checked = true;
+            radioButton6x6.Checked = true;
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
