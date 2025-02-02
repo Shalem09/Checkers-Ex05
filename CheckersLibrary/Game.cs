@@ -44,7 +44,7 @@ namespace CheckersLibrary
 
         public void RestartGame()
         {
-            int boardSize = m_Board.Grid.GetLength(0);
+            int boardSize = m_Board.m_Grid.GetLength(0);
             m_Board = new Board();
             m_Board.SetBoard(boardSize);
             m_Players = m_Players;
@@ -52,7 +52,7 @@ namespace CheckersLibrary
             m_IsGameOver = false;
         }
 
-        private void CheckForwardMoves(
+        private void checkForwardMoves(
             int i_Row, 
             int i_Col, 
             int i_RowDirection, 
@@ -87,11 +87,11 @@ namespace CheckersLibrary
         public List<List<int>> GetOptionalMoves(Board i_Board, char i_Symbol)
         {
             List<List<int>> optionalMoves = new List<List<int>>();
-            InitializePieceTypes(i_Symbol, out ePieceType regularPiece, out ePieceType kingPiece, out _, out _, out int rowDirection);
+            initializePieceTypes(i_Symbol, out ePieceType regularPiece, out ePieceType kingPiece, out _, out _, out int rowDirection);
 
-            for (int row = 0; row < i_Board.Grid.GetLength(0); row++)
+            for (int row = 0; row < i_Board.m_Grid.GetLength(0); row++)
             {
-                for (int col = 0; col < i_Board.Grid.GetLength(1); col++)
+                for (int col = 0; col < i_Board.m_Grid.GetLength(1); col++)
                 {
                     ePieceType piece = m_Board.GetPieceAt(row, col);
 
@@ -101,11 +101,11 @@ namespace CheckersLibrary
                         {
                             row, col,
                         };
-                        CheckForwardMoves(row, col, rowDirection, fromPosition, optionalMoves);
+                        checkForwardMoves(row, col, rowDirection, fromPosition, optionalMoves);
 
                         if (piece == kingPiece)
                         {
-                            CheckBackwardMoves(row, col, rowDirection, fromPosition, optionalMoves);
+                            checkBackwardMoves(row, col, rowDirection, fromPosition, optionalMoves);
                         }
                     }
                 }
@@ -114,8 +114,8 @@ namespace CheckersLibrary
             return optionalMoves;
         }
 
-        private void CheckForwardEatMoves(int i_Row, int i_Col, int i_RowDirection, List<int> i_FromPosition,
-                  ePieceType i_PlayerKing, ePieceType i_OpponentPiece,
+        private void checkForwardEatMoves(int i_Row, int i_Col, int i_RowDirection,
+            List<int> i_FromPosition, ePieceType i_OpponentPiece,
                   ePieceType i_OpponentKing, List<List<int>> i_OptionalEats)
         {
             int eatRow = i_Row + i_RowDirection;
@@ -125,7 +125,8 @@ namespace CheckersLibrary
             int landLeftCol = i_Col - 2;
             int landRightCol = i_Col + 2;
 
-            if (IsValidEatMove(eatRow, eatLeftCol, landRow, landLeftCol, i_OpponentPiece, i_OpponentKing))
+            if (isValidEatMove(eatRow, eatLeftCol, landRow, landLeftCol,
+                i_OpponentPiece, i_OpponentKing))
             {
                 List<int> move = new List<int>
                 {
@@ -135,7 +136,8 @@ namespace CheckersLibrary
                 i_OptionalEats.Add(move);
             }
 
-            if (IsValidEatMove(eatRow, eatRightCol, landRow, landRightCol, i_OpponentPiece, i_OpponentKing))
+            if (isValidEatMove(eatRow, eatRightCol, landRow, landRightCol,
+                i_OpponentPiece, i_OpponentKing))
             {
                 List<int> move = new List<int>
                 {
@@ -149,13 +151,13 @@ namespace CheckersLibrary
         public List<List<int>> GetOptionalEatMoves(Board i_Board, char i_Symbol)
         {
             List<List<int>> optionalEats = new List<List<int>>();
-            InitializePieceTypes(i_Symbol, out ePieceType playerPiece, out ePieceType playerKing,
+            initializePieceTypes(i_Symbol, out ePieceType playerPiece, out ePieceType playerKing,
                                  out ePieceType opponentPiece, out ePieceType opponentKing,
                                  out int rowDirection);
 
-            for (int row = 0; row < i_Board.Grid.GetLength(0); row++)
+            for (int row = 0; row < i_Board.m_Grid.GetLength(0); row++)
             {
-                for (int col = 0; col < i_Board.Grid.GetLength(1); col++)
+                for (int col = 0; col < i_Board.m_Grid.GetLength(1); col++)
                 {
                     ePieceType piece = m_Board.GetPieceAt(row, col);
 
@@ -167,11 +169,11 @@ namespace CheckersLibrary
                             row, col
                         };
 
-                        CheckForwardEatMoves(row, col, rowDirection, fromPosition, playerKing,
+                        checkForwardEatMoves(row, col, rowDirection, fromPosition,
                                              opponentPiece, opponentKing, optionalEats);
                         if (piece == playerKing)
                         {
-                            CheckBackwardEatMoves(row, col, rowDirection, fromPosition,
+                            checkBackwardEatMoves(row, col, rowDirection, fromPosition,
                                                   opponentPiece, opponentKing, optionalEats);
                         }
                     }
@@ -181,7 +183,7 @@ namespace CheckersLibrary
             return optionalEats;
         }
 
-        private void CheckBackwardMoves(
+        private void checkBackwardMoves(
         int i_Row,
         int i_Col,
         int i_RowDirection,
@@ -192,7 +194,8 @@ namespace CheckersLibrary
             int leftCol = i_Col - 1;
             int rightCol = i_Col + 1;
 
-            if (IsValidPosition(behindRow, leftCol) && m_Board.GetPieceAt(behindRow, leftCol) == ePieceType.None)
+            if (IsValidPosition(behindRow, leftCol)
+                && m_Board.GetPieceAt(behindRow, leftCol) == ePieceType.None)
             {
                 List<int> move = new List<int>
                 {
@@ -202,7 +205,8 @@ namespace CheckersLibrary
                 i_OptionalMoves.Add(move);
             }
 
-            if (IsValidPosition(behindRow, rightCol) && m_Board.GetPieceAt(behindRow, rightCol) == ePieceType.None)
+            if (IsValidPosition(behindRow, rightCol)
+                && m_Board.GetPieceAt(behindRow, rightCol) == ePieceType.None)
             {
                 List<int> move = new List<int>
                 {
@@ -213,8 +217,8 @@ namespace CheckersLibrary
             }
         }
 
-        private void CheckBackwardEatMoves(int i_Row, int i_Col, int i_RowDirection, List<int> i_FromPosition,
-                   ePieceType i_OpponentPiece, ePieceType i_OpponentKing,
+        private void checkBackwardEatMoves(int i_Row, int i_Col, int i_RowDirection,
+            List<int> i_FromPosition, ePieceType i_OpponentPiece, ePieceType i_OpponentKing,
                    List<List<int>> i_OptionalEats)
         {
             int behindEatRow = i_Row - i_RowDirection;
@@ -224,7 +228,8 @@ namespace CheckersLibrary
             int landLeftCol = i_Col - 2;
             int landRightCol = i_Col + 2;
 
-            if (IsValidEatMove(behindEatRow, eatLeftCol, behindLandRow, landLeftCol, i_OpponentPiece, i_OpponentKing))
+            if (isValidEatMove(behindEatRow, eatLeftCol, behindLandRow,
+                landLeftCol, i_OpponentPiece, i_OpponentKing))
             {
                 List<int> move = new List<int>
                 {
@@ -234,7 +239,8 @@ namespace CheckersLibrary
                 i_OptionalEats.Add(move);
             }
 
-            if (IsValidEatMove(behindEatRow, eatRightCol, behindLandRow, landRightCol, i_OpponentPiece, i_OpponentKing))
+            if (isValidEatMove(behindEatRow, eatRightCol, behindLandRow,
+                landRightCol, i_OpponentPiece, i_OpponentKing))
             {
                 List<int> move = new List<int>
                 {
@@ -273,8 +279,9 @@ namespace CheckersLibrary
             return containsMove;
         }
 
-        private void InitializePieceTypes(char i_Symbol, out ePieceType o_PlayerPiece, out ePieceType o_PlayerKing,
-                                  out ePieceType o_OpponentPiece, out ePieceType o_OpponentKing, out int o_RowDirection)
+        private void initializePieceTypes(char i_Symbol, out ePieceType o_PlayerPiece,
+            out ePieceType o_PlayerKing, out ePieceType o_OpponentPiece, 
+            out ePieceType o_OpponentKing, out int o_RowDirection)
         {
             if (i_Symbol == 'X' || i_Symbol == 'K')
             {
@@ -294,7 +301,7 @@ namespace CheckersLibrary
             }
         }
 
-        private bool IsValidEatMove(int i_EatRow, int i_EatCol, int i_LandRow, int i_LandCol,
+        private bool isValidEatMove(int i_EatRow, int i_EatCol, int i_LandRow, int i_LandCol,
                             ePieceType i_OpponentPiece, ePieceType i_OpponentKing)
         {
             return IsValidPosition(i_EatRow, i_EatCol) &&
@@ -306,46 +313,8 @@ namespace CheckersLibrary
 
         public bool IsValidPosition(int i_Row, int i_Col)
         {
-            return i_Row >= 0 && i_Row < m_Board.Grid.GetLength(0) &&
-                   i_Col >= 0 && i_Col < m_Board.Grid.GetLength(1);
-        }
-
-        public bool HasMoreEatMoves(List<int> i_LastMove, Board i_Board, ref List<List<int>> i_EatMoves)
-        {
-            bool hasMoreEatMoves = false;
-            i_EatMoves.Clear();
-            int fromRow = i_LastMove[0];
-            int fromCol = i_LastMove[1];
-            int toRow = i_LastMove[2];
-            int toCol = i_LastMove[3];
-            List<int> toPosition = new List<int>
-            {
-                toRow, toCol
-            };
-
-            char pieceSymbol = (char)i_Board.GetPieceAt(fromRow, fromCol);
-
-            List<List<int>> eatMovesTotal = GetOptionalEatMoves(i_Board, pieceSymbol);
-
-            foreach (List<int> move in eatMovesTotal)
-            {
-                List<int> moveStartPosition = new List<int> 
-                {
-                    move[0], move[1] 
-                };
-
-                if (moveStartPosition == toPosition)
-                {
-                    i_EatMoves.Add(move);
-                }
-            }
-
-            if (i_EatMoves.Count > 0)
-            {
-                hasMoreEatMoves = true;
-            }
-
-            return hasMoreEatMoves;
+            return i_Row >= 0 && i_Row < m_Board.m_Grid.GetLength(0) &&
+                   i_Col >= 0 && i_Col < m_Board.m_Grid.GetLength(1);
         }
 
         public void MakeMove(List<int> i_Move, Board i_Board, bool i_IsEatingMove)
@@ -354,9 +323,9 @@ namespace CheckersLibrary
             int fromCol = i_Move[1];
             int toRow = i_Move[2];
             int toCol = i_Move[3];
-            ePieceType newPieceType = ePieceType.None;
+            ePieceType newPieceType;
 
-            if (toRow == i_Board.Grid.GetLength(0) - 1 && i_Board.GetPieceAt(fromRow, fromCol) == ePieceType.O)
+            if (toRow == i_Board.m_Grid.GetLength(0) - 1 && i_Board.GetPieceAt(fromRow, fromCol) == ePieceType.O)
             {
                 newPieceType = ePieceType.U;
             }
@@ -380,39 +349,74 @@ namespace CheckersLibrary
             }
         }
 
-        private List<int> SelectMove(List<List<int>> moves)
+        private List<int> selectMove(List<List<int>> i_Moves)
         {
             Random random = new Random();
-            int index = random.Next(moves.Count);
-            return moves[index];
+            int index = random.Next(i_Moves.Count);
+            return i_Moves[index];
         }
 
-        public List<int> MakeMoveForComputer(Board i_Board, char i_Symbol)
+        public void MakeMoveForComputer(Board i_Board)
         {
-            List<List<int>> eatMoves = GetOptionalEatMoves(i_Board, i_Symbol);
-            List<List<int>> regularMoves = GetOptionalMoves(i_Board, i_Symbol);
+            List<List<int>> eatMoves = GetOptionalEatMoves(i_Board, 'O');
+            List<List<int>> regularMoves = GetOptionalMoves(i_Board, 'O');
             List<int> selectedMove = null;
+            bool isEatMove = false;
 
             if (eatMoves.Count > 0)
             {
-                selectedMove = SelectMove(eatMoves);
+                selectedMove = selectMove(eatMoves);
+                isEatMove = true;
             }
             else if (regularMoves.Count > 0)
             {
-                selectedMove = SelectMove(regularMoves);
+                selectedMove = selectMove(regularMoves);
             }
 
             if (selectedMove != null)
             {
-                MakeMove(selectedMove, i_Board, eatMoves.Contains(selectedMove));
+                MakeMove(selectedMove, m_Board, eatMoves.Contains(selectedMove));
+
+                if (isEatMove)
+                {
+                    while (HasMoreEatMoves(selectedMove, m_Board, ref eatMoves))
+                    {
+                        MakeMoveForComputer(m_Board);
+                    }
+                }
             }
             else
             {
-                //Console.WriteLine($"Computer ({i_Symbol}) has no valid moves.");
-                ChangeGameOverState(null);
+                ChangeGameOverState(m_Players[1]);
+            }
+        }
+
+        public bool HasMoreEatMoves(List<int> i_LastMove, Board i_Board,
+            ref List<List<int>> i_EatMoves)
+        {
+            bool hasMoreEatMoves = false;
+            i_EatMoves.Clear();
+            int landRow = i_LastMove[2];
+            int landCol = i_LastMove[3];
+
+            char pieceSymbol = (char)i_Board.GetPieceAt(landRow, landCol);
+
+            List<List<int>> eatMovesTotal = GetOptionalEatMoves(i_Board, pieceSymbol);
+
+            foreach (List<int> move in eatMovesTotal)
+            {
+                if (move[0] == landRow && move[1] == landCol)
+                {
+                    i_EatMoves.Add(move);
+                }
             }
 
-            return selectedMove;
+            if (i_EatMoves.Count > 0)
+            {
+                hasMoreEatMoves = true;
+            }
+
+            return hasMoreEatMoves;
         }
 
         public int CalculatePlayerScore(Board i_Board, Player i_Player)
@@ -421,9 +425,9 @@ namespace CheckersLibrary
             ePieceType regularPiece = i_Player.m_Symbol == 'X' ? ePieceType.X : ePieceType.O;
             ePieceType kingPiece = i_Player.m_Symbol == 'X' ? ePieceType.K : ePieceType.U;
 
-            for (int row = 0; row < i_Board.Grid.GetLength(0); row++)
+            for (int row = 0; row < i_Board.m_Grid.GetLength(0); row++)
             {
-                for (int col = 0; col < i_Board.Grid.GetLength(1); col++)
+                for (int col = 0; col < i_Board.m_Grid.GetLength(1); col++)
                 {
                     ePieceType piece = i_Board.GetPieceAt(row, col);
 

@@ -12,12 +12,20 @@ namespace CheckersWindowsApp
     public partial class FormSettings : Form
     {
         public int m_BoardSize { get; private set; } = 8;
-        public string m_Player1Name => textBoxFirstPlayer.Text;
-        public string m_Player2Name => checkBoxSecondPlayer.Checked ? textBoxSecondPlayer.Text : "Computer";
-        public bool m_IsPlayer2Computer => checkBoxSecondPlayer.Checked;
-        private Color m_backgroundColor { get; set; } = Color.White;
-        public static Color m_firstPlayerLabelColor { get; private set; } = Color.Black;
-        public static Color m_secondPlayerLabelColor { get; private set; } = Color.Black;
+        public string m_Player1Name
+        {
+            get { return textBoxFirstPlayer.Text; }
+        }
+        public string m_Player2Name
+        {
+            get
+            {
+                return checkBoxSecondPlayer.Checked ? textBoxSecondPlayer.Text : "Computer";
+            }
+        }
+        private Color m_BackgroundColor { get; set; } = Color.White;
+        public static Color m_FirstPlayerLabelColor { get; private set; } = Color.Black;
+        public static Color m_SecondPlayerLabelColor { get; private set; } = Color.Black;
 
         public FormSettings()
         {
@@ -59,11 +67,10 @@ namespace CheckersWindowsApp
                 m_BoardSize,
                 m_Player1Name,
                 m_Player2Name,
-                m_IsPlayer2Computer,
-                m_firstPlayerLabelColor,
-                m_secondPlayerLabelColor);
+                m_FirstPlayerLabelColor,
+                m_SecondPlayerLabelColor);
 
-            gameBoard.BackColor = m_backgroundColor;
+            gameBoard.BackColor = m_BackgroundColor;
             gameBoard.Show();
             Hide(); 
         }
@@ -103,7 +110,7 @@ namespace CheckersWindowsApp
 
         private void onBackgroungColorChosen(Color chosenColor)
         {
-            m_backgroundColor = chosenColor;
+            m_BackgroundColor = chosenColor;
         }
 
         private void pictureBoxFirstPlayer_Click(object sender, EventArgs e)
@@ -116,7 +123,7 @@ namespace CheckersWindowsApp
 
         private void onFirstLabelColorChosen(Color chosenColor)
         {
-            m_firstPlayerLabelColor = chosenColor;
+            m_FirstPlayerLabelColor = chosenColor;
         }
 
         private void pictureBoxSecondPlayer_Click(object sender, EventArgs e)
@@ -129,7 +136,7 @@ namespace CheckersWindowsApp
 
         private void onSecondLabelColorChosen(Color chosenColor)
         {
-            m_secondPlayerLabelColor = chosenColor;
+            m_SecondPlayerLabelColor = chosenColor;
         }
     }
 }

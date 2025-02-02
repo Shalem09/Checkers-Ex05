@@ -6,7 +6,7 @@ namespace CheckersWindowsApp
 {
     public partial class FormColor : Form
     {
-        public event Action<Color> ColorChosen; // Event to notify listeners
+        public event Action<Color> ColorChosen;
 
         public FormColor()
         {
