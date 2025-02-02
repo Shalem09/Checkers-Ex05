@@ -8,13 +8,13 @@ namespace CheckersWindowsApp
 {
     public partial class FormGrid : Form
     {
-        private Button[,] m_BoardButtons;
+        private ExtendedButton[,] m_BoardButtons;
         private readonly int r_BoardSize;
         private Game m_Game;
         private readonly Player r_FirstPlayer = new Player();
         private readonly Player r_SecondPlayer = new Player();
         private Player m_CurrentPlayer = new Player();
-        private Button m_SelectedButton = null;
+        private ExtendedButton m_SelectedButton = null;
 
         public FormGrid(int i_size, string i_player1Name, string i_player2Name,
             Color i_FirstPlayerLabelColor, Color i_SecondPlayerLabelColor)
@@ -49,6 +49,7 @@ namespace CheckersWindowsApp
                 labelFirstPlayer.Text = $"{r_FirstPlayer.m_Name} - Score: 0";
                 labelSecondPlayer.Text = $"{r_SecondPlayer.m_Name} - Score: 0";
             }
+
             labelFirstPlayer.Location = new Point(margin, 10);
             labelSecondPlayer.Location = new Point(ClientSize.Width - labelSecondPlayer.Width - margin, 10);
         }
@@ -65,7 +66,7 @@ namespace CheckersWindowsApp
 
         private void createBoard(int i_Size)
         {
-            m_BoardButtons = new Button[i_Size, i_Size];
+            m_BoardButtons = new ExtendedButton[i_Size, i_Size];
 
             int buttonSize = 50;
             int startX = 20, startY = 50;
@@ -75,7 +76,7 @@ namespace CheckersWindowsApp
             {
                 for (int col = 0; col < i_Size; col++)
                 {
-                    Button button = new Button();
+                    ExtendedButton button = new ExtendedButton();
                     button.Font = new Font(button.Font.FontFamily, 15, FontStyle.Bold);
                     button.Width = buttonSize;
                     button.Height = buttonSize;
@@ -101,25 +102,14 @@ namespace CheckersWindowsApp
             updateBoardUI();
         }
 
-        private void setButtonSetTextColor(Button i_Button)
-        {
-            if (i_Button.Text == "O" || i_Button.Text == "U")
-            {
-                i_Button.ForeColor = FormSettings.m_SecondPlayerLabelColor;
-            }
-
-            if (i_Button.Text == "X" || i_Button.Text == "K")
-            {
-                i_Button.ForeColor = FormSettings.m_FirstPlayerLabelColor;
-            }
-        }
-
         private void button_FirstClick(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
+            ExtendedButton clickedButton = sender as ExtendedButton;
 
-            if ((clickedButton.Text == "X" || clickedButton.Text == "K") && m_CurrentPlayer.m_Symbol == 'X' ||
-                (clickedButton.Text == "O" || clickedButton.Text == "U") && m_CurrentPlayer.m_Symbol == 'O')
+            if ((clickedButton.m_PlayerSymbol == 'X' || clickedButton.m_PlayerSymbol == 'K')
+                && m_CurrentPlayer.m_Symbol == 'X' ||
+                (clickedButton.m_PlayerSymbol == 'O' || clickedButton.m_PlayerSymbol == 'U') 
+                && m_CurrentPlayer.m_Symbol == 'O')
             {
                 m_SelectedButton = clickedButton;
                 clickedButton.BackColor = Color.LightBlue;
@@ -129,7 +119,7 @@ namespace CheckersWindowsApp
 
         private void button_SecondClick(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
+            ExtendedButton clickedButton = sender as ExtendedButton;
 
             if (m_SelectedButton == null) return;
 
@@ -180,15 +170,14 @@ namespace CheckersWindowsApp
             }
         }
 
-        private void makeMove(List<int> i_MoveMade, Button i_ClickedButton)
+        private void makeMove(List<int> i_MoveMade, ExtendedButton i_ClickedButton)
         {
             bool isMoveValid = false;
             bool isErrorShown = false;
 
-            List<List<int>> optionalMoves = m_Game.GetOptionalEatMoves(m_Game.m_Board, m_SelectedButton.Text[0]);
+            List<List<int>> optionalMoves = m_Game.GetOptionalEatMoves(m_Game.m_Board, m_SelectedButton.m_PlayerSymbol);
             bool isEatingMove = m_Game.ContainsMove(optionalMoves, i_MoveMade);
 
-            // Check if the player must eat
             if (!isEatingMove && optionalMoves.Count > 0)
             {
                 MessageBox.Show(
@@ -204,7 +193,7 @@ namespace CheckersWindowsApp
                 isMoveValid = true;
                 if (!isEatingMove)
                 {
-                    optionalMoves = m_Game.GetOptionalMoves(m_Game.m_Board, m_SelectedButton.Text[0]);
+                    optionalMoves = m_Game.GetOptionalMoves(m_Game.m_Board, m_SelectedButton.m_PlayerSymbol);
                 }
             }
 
@@ -213,14 +202,11 @@ namespace CheckersWindowsApp
                 m_Game.MakeMove(i_MoveMade, m_Game.m_Board, isEatingMove);
                 updateBoardUI();
 
-                Player winner;
-                //bool isGameOver = isGameOver(out winner);
-
                 bool hasFurtherEatingMove = false;
                 if (isEatingMove && !m_Game.m_IsGameOver)
                 {
                     Point newPos = new Point(i_MoveMade[2], i_MoveMade[3]);
-                    List<List<int>> furtherEatingMoves = m_Game.GetOptionalEatMoves(m_Game.m_Board, i_ClickedButton.Text[0]);
+                    List<List<int>> furtherEatingMoves = m_Game.GetOptionalEatMoves(m_Game.m_Board, i_ClickedButton.m_PlayerSymbol);
 
                     foreach (List<int> move in furtherEatingMoves)
                     {
@@ -266,27 +252,30 @@ namespace CheckersWindowsApp
                     switch (piece)
                     {
                         case ePieceType.None:
-                            m_BoardButtons[row, col].Text = "";
+                            m_BoardButtons[row, col].SetSymbol('\0');
+                            m_BoardButtons[row, col].Image = null;
                             break;
 
                         case ePieceType.O:
-                            m_BoardButtons[row, col].Text = ePieceType.O.ToString();
+                            m_BoardButtons[row, col].SetSymbol('O');
+                            m_BoardButtons[row, col].Image = Properties.Resources.BlackToken;
                             break;
 
                         case ePieceType.U:
-                            m_BoardButtons[row, col].Text = ePieceType.U.ToString();
+                            m_BoardButtons[row, col].SetSymbol('U');
+                            m_BoardButtons[row, col].Image = Properties.Resources.BlackKing;
                             break;
 
                         case ePieceType.X:
-                            m_BoardButtons[row, col].Text = ePieceType.X.ToString();
+                            m_BoardButtons[row, col].SetSymbol('X');
+                            m_BoardButtons[row, col].Image = Properties.Resources.BeigeToken;
                             break;
 
                         case ePieceType.K:
-                            m_BoardButtons[row, col].Text = ePieceType.K.ToString();
+                            m_BoardButtons[row, col].SetSymbol('K');
+                            m_BoardButtons[row, col].Image = Properties.Resources.BeigeKing;
                             break;
                     }
-
-                    setButtonSetTextColor(m_BoardButtons[row, col]);
                 }
             }
         }
@@ -448,6 +437,7 @@ namespace CheckersWindowsApp
         private void restartGame()
         {
             m_Game.RestartGame();
+            m_CurrentPlayer = m_Game.m_Players[0];
             updateBoardUI();
             gameProcess();
         }

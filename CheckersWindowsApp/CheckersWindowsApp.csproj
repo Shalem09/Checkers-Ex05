@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtendedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="FormColor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +111,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-color-wheel-20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BeigeKing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BeigeToken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackKing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackToken.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

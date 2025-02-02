@@ -62,6 +62,7 @@ namespace CheckersWindowsApp
             this.ClientSize = new System.Drawing.Size(832, 726);
             this.Controls.Add(this.labelSecondPlayer);
             this.Controls.Add(this.labelFirstPlayer);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormGrid";
             this.Text = "FormGrid";

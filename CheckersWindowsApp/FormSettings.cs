@@ -73,7 +73,10 @@ namespace CheckersWindowsApp
         private void done_button_Click(object sender, EventArgs e)
         {
             checkBoardSize();
-            openGameBoard();
+            if(textBoxFirstPlayer.Text.Length > 0)
+            {
+                openGameBoard();
+            }
         }
 
         private void player2_checkBox_CheckedChanged(object sender, EventArgs e)

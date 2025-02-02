@@ -25,7 +25,6 @@
         {
             m_Name = char.ToUpper(i_Name[0]) + i_Name.Substring(1);
         }
-
     }
 }
 

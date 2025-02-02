@@ -183,6 +183,7 @@
             this.Controls.Add(this.labelRGBColors);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.label);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "FormColor";
             this.Text = "Color Picker";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
