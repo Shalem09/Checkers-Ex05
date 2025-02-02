@@ -6,17 +6,6 @@ namespace CheckersLibrary
     {
         public ePieceType[,] m_Grid { get; private set; }
 
-        public void SetBoard(int i_Size)
-        {
-            if (i_Size < 6 || i_Size > 10 || i_Size % 2 != 0)
-            {
-                throw new ArgumentException("Board size must be 6, 8 or 10.");
-            }
-
-            m_Grid = new ePieceType[i_Size, i_Size];
-            initializeGrid();
-        }
-
         private void initializeGrid()
         {
             int rows = m_Grid.GetLength(0);
@@ -42,6 +31,17 @@ namespace CheckersLibrary
                     }
                 }
             }
+        }
+
+        public void SetBoard(int i_Size)
+        {
+            if (i_Size < 6 || i_Size > 10 || i_Size % 2 != 0)
+            {
+                throw new ArgumentException("Board size must be 6, 8 or 10.");
+            }
+
+            m_Grid = new ePieceType[i_Size, i_Size];
+            initializeGrid();
         }
 
         public ePieceType GetPieceAt(int i_Row, int i_Col)

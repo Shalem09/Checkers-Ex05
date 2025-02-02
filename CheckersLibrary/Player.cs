@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CheckersLibrary
+﻿namespace CheckersLibrary
 {
     public class Player
     {
@@ -12,7 +6,7 @@ namespace CheckersLibrary
         public char m_Symbol { get; private set; }
         public int m_Score { get; private set; }
 
-        public Player() 
+        public Player()
         {
             m_Score = 0;
         }

@@ -65,7 +65,7 @@ namespace CheckersWindowsApp
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormGrid";
             this.Text = "FormGrid";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormGrid_FormClosed);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.formGrid_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

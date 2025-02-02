@@ -141,7 +141,7 @@ namespace CheckersWindowsApp
             this.checkBoxSecondPlayer.TabIndex = 9;
             this.checkBoxSecondPlayer.Text = "Player 2:";
             this.checkBoxSecondPlayer.UseVisualStyleBackColor = true;
-            this.checkBoxSecondPlayer.CheckedChanged += new System.EventHandler(this.Player2_checkBox_CheckedChanged);
+            this.checkBoxSecondPlayer.CheckedChanged += new System.EventHandler(this.player2_checkBox_CheckedChanged);
             // 
             // textBoxSecondPlayer
             // 
@@ -179,7 +179,7 @@ namespace CheckersWindowsApp
             // pictureBoxFirstPlayer
             // 
             this.pictureBoxFirstPlayer.Image = global::CheckersWindowsApp.Properties.Resources.icons8_color_wheel_20;
-            this.pictureBoxFirstPlayer.Location = new System.Drawing.Point(233, 167);
+            this.pictureBoxFirstPlayer.Location = new System.Drawing.Point(226, 156);
             this.pictureBoxFirstPlayer.Name = "pictureBoxFirstPlayer";
             this.pictureBoxFirstPlayer.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxFirstPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -190,7 +190,7 @@ namespace CheckersWindowsApp
             // pictureBoxSecondPlayer
             // 
             this.pictureBoxSecondPlayer.Image = global::CheckersWindowsApp.Properties.Resources.icons8_color_wheel_20;
-            this.pictureBoxSecondPlayer.Location = new System.Drawing.Point(233, 223);
+            this.pictureBoxSecondPlayer.Location = new System.Drawing.Point(226, 212);
             this.pictureBoxSecondPlayer.Name = "pictureBoxSecondPlayer";
             this.pictureBoxSecondPlayer.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxSecondPlayer.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;

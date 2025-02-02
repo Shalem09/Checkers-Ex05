@@ -1,9 +1,8 @@
-﻿using System;
+﻿using CheckersLibrary;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
 using System.Windows.Forms;
-using CheckersLibrary;
 
 namespace CheckersWindowsApp
 {
@@ -17,7 +16,7 @@ namespace CheckersWindowsApp
         private Player m_CurrentPlayer = new Player();
         private Button m_SelectedButton = null;
 
-        public FormGrid(int i_size, string i_player1Name, string i_player2Name, 
+        public FormGrid(int i_size, string i_player1Name, string i_player2Name,
             Color i_FirstPlayerLabelColor, Color i_SecondPlayerLabelColor)
         {
             InitializeComponent();
@@ -58,7 +57,7 @@ namespace CheckersWindowsApp
         {
 
             m_Game = new Game(r_BoardSize);
-            m_Game.InitializeGame(r_BoardSize, r_FirstPlayer.m_Name, r_SecondPlayer.m_Name);
+            m_Game.InitializeGame(r_FirstPlayer.m_Name, r_SecondPlayer.m_Name);
             m_CurrentPlayer = r_FirstPlayer;
             labelFirstPlayer.ForeColor = i_FirstPlayerLabelColor;
             labelSecondPlayer.ForeColor = i_SecondPlayerLabelColor;
@@ -104,7 +103,7 @@ namespace CheckersWindowsApp
 
         private void setButtonSetTextColor(Button i_Button)
         {
-            if(i_Button.Text == "O" || i_Button.Text == "U")
+            if (i_Button.Text == "O" || i_Button.Text == "U")
             {
                 i_Button.ForeColor = FormSettings.m_SecondPlayerLabelColor;
             }
@@ -124,7 +123,7 @@ namespace CheckersWindowsApp
             {
                 m_SelectedButton = clickedButton;
                 clickedButton.BackColor = Color.LightBlue;
-                UpdateAllButtonsToSecondClick();
+                updateAllButtonsToSecondClick();
             }
         }
 
@@ -154,11 +153,10 @@ namespace CheckersWindowsApp
 
             m_SelectedButton = null;
 
-            UpdateAllButtonsToFirstClick();
+            updateAllButtonsToFirstClick();
         }
 
-        // מתודה שרושמת את כל הכפתורים הקיימים בלוח למתודת ה "קליק השני"
-        private void UpdateAllButtonsToSecondClick()
+        private void updateAllButtonsToSecondClick()
         {
             foreach (Control control in Controls)
             {
@@ -170,8 +168,7 @@ namespace CheckersWindowsApp
             }
         }
 
-        // מתודה שרושמת את כל הכפתורים הקיימים בלוח למתודת ה "קליק הראשון"
-        private void UpdateAllButtonsToFirstClick()
+        private void updateAllButtonsToFirstClick()
         {
             foreach (Control control in Controls)
             {
@@ -217,7 +214,7 @@ namespace CheckersWindowsApp
                 updateBoardUI();
 
                 Player winner;
-                //bool isGameOver = IsGameOver(out winner);
+                //bool isGameOver = isGameOver(out winner);
 
                 bool hasFurtherEatingMove = false;
                 if (isEatingMove && !m_Game.m_IsGameOver)
@@ -315,17 +312,15 @@ namespace CheckersWindowsApp
 
             updateBoardUI();
 
-            // אם יש צעדים אוםציונליים לשחקן השני, לא לסיים את המשחק
-
-            bool  isGameOver = IsGameOver(out Player winner);
+            bool isGameOver = this.isGameOver(out Player winner);
 
             if (isGameOver)
             {
-                EndGame(winner);
+                endGame(winner);
             }
         }
 
-        private bool IsGameOver(out Player o_Winner)
+        private bool isGameOver(out Player o_Winner)
         {
             Player winner = checkForValidatedMoves();
 
@@ -390,7 +385,7 @@ namespace CheckersWindowsApp
 
             if (movesForO.Count == 0 && movesForX.Count == 0)
             {
-                winner = null; // תיקו
+                winner = null;
             }
             else if (movesForO.Count == 0)
             {
@@ -422,7 +417,7 @@ namespace CheckersWindowsApp
                 MessageBoxIcon.Question);
         }
 
-        private void EndGame(Player i_Winner)
+        private void endGame(Player i_Winner)
         {
             initializeBoard();
             DialogResult result;
@@ -442,7 +437,7 @@ namespace CheckersWindowsApp
 
             if (result == DialogResult.Yes)
             {
-                RestartGame();
+                restartGame();
             }
             else
             {
@@ -450,14 +445,14 @@ namespace CheckersWindowsApp
             }
         }
 
-        private void RestartGame()
+        private void restartGame()
         {
             m_Game.RestartGame();
             updateBoardUI();
             gameProcess();
         }
 
-        private void FormGrid_FormClosed(object sender, FormClosedEventArgs e)
+        private void formGrid_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }

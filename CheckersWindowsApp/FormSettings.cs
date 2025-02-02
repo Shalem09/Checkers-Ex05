@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace CheckersWindowsApp
@@ -30,10 +25,10 @@ namespace CheckersWindowsApp
         public FormSettings()
         {
             InitializeComponent();
-            InitializeDefaults();
+            initializeDefaults();
         }
 
-        private void InitializeDefaults()
+        private void initializeDefaults()
         {
             textBoxSecondPlayer.ForeColor = Color.Gray;
             textBoxSecondPlayer.Enabled = false;
@@ -42,10 +37,10 @@ namespace CheckersWindowsApp
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-            CheckBoardSize();
+            checkBoardSize();
         }
 
-        private void CheckBoardSize()
+        private void checkBoardSize()
         {
             if (radioButton6x6.Checked)
             {
@@ -72,16 +67,16 @@ namespace CheckersWindowsApp
 
             gameBoard.BackColor = m_BackgroundColor;
             gameBoard.Show();
-            Hide(); 
+            Hide();
         }
 
         private void done_button_Click(object sender, EventArgs e)
         {
-            CheckBoardSize();
+            checkBoardSize();
             openGameBoard();
         }
 
-        private void Player2_checkBox_CheckedChanged(object sender, EventArgs e)
+        private void player2_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBoxSecondPlayer.Checked)
             {
