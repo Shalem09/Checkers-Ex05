@@ -1,4 +1,5 @@
-﻿
+﻿using System.Drawing;
+
 namespace CheckersWindowsApp
 {
     partial class FormGrid
@@ -31,6 +32,7 @@ namespace CheckersWindowsApp
         {
             this.labelFirstPlayer = new System.Windows.Forms.Label();
             this.labelSecondPlayer = new System.Windows.Forms.Label();
+            this.Icon = new Icon(Properties.Resources.CheckersLogo, 30, 30 );
             this.SuspendLayout();
             // 
             // labelFirstPlayer
@@ -74,7 +76,6 @@ namespace CheckersWindowsApp
 
 
         #endregion
-
         private System.Windows.Forms.Label labelFirstPlayer;
         private System.Windows.Forms.Label labelSecondPlayer;
     }

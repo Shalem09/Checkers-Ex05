@@ -1,4 +1,0 @@
-C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.AssemblyReference.cache
-C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CoreCompileInputs.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.AssemblyReference.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersConsoleUI\obj\Debug\CheckersConsoleUI.csproj.CoreCompileInputs.cache

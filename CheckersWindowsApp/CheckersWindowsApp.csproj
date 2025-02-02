@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CheckersWindowsApp</RootNamespace>
     <AssemblyName>CheckersWindowsApp</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -123,6 +123,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\BlackToken.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CheckersLogo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

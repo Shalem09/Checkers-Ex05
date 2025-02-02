@@ -176,7 +176,7 @@ namespace CheckersWindowsApp
             bool isErrorShown = false;
 
             List<List<int>> optionalMoves = m_Game.GetOptionalEatMoves(m_Game.m_Board, m_SelectedButton.m_PlayerSymbol);
-            bool isEatingMove = m_Game.ContainsMove(optionalMoves, i_MoveMade);
+            bool isEatingMove = m_Game.IsContainsMove(optionalMoves, i_MoveMade);
 
             if (!isEatingMove && optionalMoves.Count > 0)
             {
@@ -197,7 +197,7 @@ namespace CheckersWindowsApp
                 }
             }
 
-            if (m_Game.ContainsMove(optionalMoves, i_MoveMade) && isMoveValid)
+            if (m_Game.IsContainsMove(optionalMoves, i_MoveMade) && isMoveValid)
             {
                 m_Game.MakeMove(i_MoveMade, m_Game.m_Board, isEatingMove);
                 updateBoardUI();

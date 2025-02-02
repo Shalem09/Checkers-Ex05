@@ -1,6 +1,4 @@
 ﻿using System.Drawing;
-using System.Collections;
-
 
 namespace CheckersWindowsApp
 {
@@ -45,6 +43,7 @@ namespace CheckersWindowsApp
             this.buttonBackgroundColor = new System.Windows.Forms.Button();
             this.pictureBoxFirstPlayer = new System.Windows.Forms.PictureBox();
             this.pictureBoxSecondPlayer = new System.Windows.Forms.PictureBox();
+            this.Icon = Properties.Resources.CheckersLogo;
             this.boardSizeGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxFirstPlayer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSecondPlayer)).BeginInit();

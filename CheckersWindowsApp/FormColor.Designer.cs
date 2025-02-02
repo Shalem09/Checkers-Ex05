@@ -1,4 +1,6 @@
-﻿namespace CheckersWindowsApp
+﻿using System.Drawing;
+
+namespace CheckersWindowsApp
 {
     partial class FormColor
     {
@@ -42,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonConfirm = new System.Windows.Forms.Button();
+            this.Icon = new Icon(Properties.Resources.CheckersLogo, 30, 30);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();

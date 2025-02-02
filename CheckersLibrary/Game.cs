@@ -85,7 +85,6 @@ namespace CheckersLibrary
             }
         }
 
-
         private void initializePieceTypes(char i_Symbol, out ePieceType o_PlayerPiece,
             out ePieceType o_PlayerKing, out ePieceType o_OpponentPiece,
             out ePieceType o_OpponentKing, out int o_RowDirection)
@@ -122,6 +121,7 @@ namespace CheckersLibrary
         {
             Random random = new Random();
             int index = random.Next(i_Moves.Count);
+
             return i_Moves[index];
         }
 
@@ -297,15 +297,16 @@ namespace CheckersLibrary
                    i_Col >= 0 && i_Col < m_Board.m_Grid.GetLength(1);
         }
 
-        public bool ContainsMove(List<List<int>> i_OptionalMoves, List<int> i_MoveToCheck)
+        public bool IsContainsMove(List<List<int>> i_OptionalMoves, List<int> i_MoveToCheck)
         {
             bool containsMove = false;
 
-            foreach (var move in i_OptionalMoves)
+            foreach (List<int> move in i_OptionalMoves)
             {
                 if (move.Count == i_MoveToCheck.Count)
                 {
                     bool isEqual = true;
+
                     for (int i = 0; i < move.Count; i++)
                     {
                         if (move[i] != i_MoveToCheck[i])
@@ -314,6 +315,7 @@ namespace CheckersLibrary
                             break;
                         }
                     }
+
                     if (isEqual)
                     {
                         containsMove = true;
@@ -380,7 +382,7 @@ namespace CheckersLibrary
 
                 if (isEatMove)
                 {
-                    while (HasMoreEatMoves(selectedMove, m_Board, ref eatMoves))
+                    while (IsMoreEatMoves(selectedMove, m_Board, ref eatMoves))
                     {
                         MakeMoveForComputer(m_Board);
                     }
@@ -392,7 +394,7 @@ namespace CheckersLibrary
             }
         }
 
-        public bool HasMoreEatMoves(List<int> i_LastMove, Board i_Board,
+        public bool IsMoreEatMoves(List<int> i_LastMove, Board i_Board,
             ref List<List<int>> i_EatMoves)
         {
             bool hasMoreEatMoves = false;
@@ -401,7 +403,6 @@ namespace CheckersLibrary
             int landCol = i_LastMove[3];
 
             char pieceSymbol = (char)i_Board.GetPieceAt(landRow, landCol);
-
             List<List<int>> eatMovesTotal = GetOptionalEatMoves(i_Board, pieceSymbol);
 
             foreach (List<int> move in eatMovesTotal)

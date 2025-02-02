@@ -4,6 +4,7 @@ C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\bin\Debug\CheckersLibrary.dll
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\bin\Debug\CheckersLibrary.pdb
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.AssemblyReference.cache
+C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormColor.resources
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormSettings.resources
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormGrid.resources
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.Properties.Resources.resources
@@ -12,18 +13,3 @@ C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.CopyComplete
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.exe
 C:\Users\OR\Downloads\ThirdYear - Semester A\Object-Oriented Programming using C# and The .NET Framework\Checkers-Ex05\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.pdb
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\bin\Debug\CheckersWindowsApp.exe.config
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\bin\Debug\CheckersWindowsApp.exe
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\bin\Debug\CheckersWindowsApp.pdb
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\bin\Debug\CheckersLibrary.dll
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\bin\Debug\CheckersLibrary.pdb
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.AssemblyReference.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormColor.resources
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormSettings.resources
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.FormGrid.resources
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.Properties.Resources.resources
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.GenerateResource.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.csproj.CoreCompileInputs.cache
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\Checkers.2D947371.Up2Date
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.exe
-C:\Users\robix\source\repos\CheckersLibrary\CheckersWindowsApp\obj\Debug\CheckersWindowsApp.pdb
