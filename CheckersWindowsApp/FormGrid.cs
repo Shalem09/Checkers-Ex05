@@ -17,8 +17,6 @@ namespace CheckersWindowsApp
         private Player m_CurrentPlayer = new Player();
         private Button m_SelectedButton = null;
 
-
-
         public FormGrid(int i_size, string i_player1Name, string i_player2Name, 
             Color i_FirstPlayerLabelColor, Color i_SecondPlayerLabelColor)
         {
@@ -117,8 +115,6 @@ namespace CheckersWindowsApp
             }
         }
 
-        // קליק ראשון - מבצע רגיל את הלוגיקה שהייתה בלחיצה ראשונה
-        // בסיום מעדכן את כל הכפתורים הקיימים (אחרים ועצמו) שירשמו למתודת הקליק השני
         private void button_FirstClick(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
@@ -128,13 +124,10 @@ namespace CheckersWindowsApp
             {
                 m_SelectedButton = clickedButton;
                 clickedButton.BackColor = Color.LightBlue;
+                UpdateAllButtonsToSecondClick();
             }
-
-            UpdateAllButtonsToSecondClick();
         }
 
-        // קליק שני - מבצע רגיל את הלוגיקה שהייתה בלחיצה שניה
-        // בסיום מעדכן את כל הכפתורים הקיימים (אחרים ועצמו) שירשמו בחזרה למתודת הקליק הראשון
         private void button_SecondClick(object sender, EventArgs e)
         {
             Button clickedButton = sender as Button;
@@ -146,7 +139,6 @@ namespace CheckersWindowsApp
 
             if (fromPos != toPos)
             {
-
                 List<int> moveMade = new List<int>
                 {
                     fromPos.X, fromPos.Y, toPos.X, toPos.Y,
@@ -162,8 +154,6 @@ namespace CheckersWindowsApp
 
             m_SelectedButton = null;
 
-            GameProcess();
-
             UpdateAllButtonsToFirstClick();
         }
 
@@ -175,7 +165,6 @@ namespace CheckersWindowsApp
                 if (control is Button button)
                 {
                     button.Click -= button_FirstClick;
-                    button.Click -= button_SecondClick;
                     button.Click += button_SecondClick;
                 }
             }
@@ -189,7 +178,6 @@ namespace CheckersWindowsApp
                 if (control is Button button)
                 {
                     button.Click -= button_SecondClick;
-                    button.Click -= button_FirstClick;
                     button.Click += button_FirstClick;
                 }
             }
@@ -229,10 +217,10 @@ namespace CheckersWindowsApp
                 updateBoardUI();
 
                 Player winner;
-                bool isGameOver = IsGameOver(out winner);
+                //bool isGameOver = IsGameOver(out winner);
 
                 bool hasFurtherEatingMove = false;
-                if (isEatingMove && !isGameOver)
+                if (isEatingMove && !m_Game.m_IsGameOver)
                 {
                     Point newPos = new Point(i_MoveMade[2], i_MoveMade[3]);
                     List<List<int>> furtherEatingMoves = m_Game.GetOptionalEatMoves(m_Game.m_Board, i_ClickedButton.Text[0]);
@@ -247,11 +235,7 @@ namespace CheckersWindowsApp
                     }
                 }
 
-                if (isGameOver)
-                {
-                    EndGame(winner);
-                }
-                else if (hasFurtherEatingMove)
+                if (hasFurtherEatingMove)
                 {
                     m_SelectedButton.BackColor = Color.White;
                     i_ClickedButton.BackColor = Color.LightBlue;
@@ -260,7 +244,7 @@ namespace CheckersWindowsApp
                 else
                 {
                     m_CurrentPlayer = (m_CurrentPlayer == r_SecondPlayer) ? r_FirstPlayer : r_SecondPlayer;
-                    GameProcess();
+                    gameProcess();
                 }
             }
             else if (!isErrorShown)
@@ -310,7 +294,7 @@ namespace CheckersWindowsApp
             }
         }
 
-        private void GameProcess()
+        private void gameProcess()
         {
             bool isComputerTurn = m_CurrentPlayer.m_Name == "Computer";
 
@@ -319,9 +303,19 @@ namespace CheckersWindowsApp
                 m_Game.MakeMoveForComputer(m_Game.m_Board);
 
                 m_CurrentPlayer = (m_CurrentPlayer == r_SecondPlayer) ? r_FirstPlayer : r_SecondPlayer;
+
+                List<List<int>> movesForX = m_Game.GetOptionalEatMoves(m_Game.m_Board, 'X');
+
+                if (movesForX.Count > 0)
+                {
+                    updateBoardUI();
+                    return;
+                }
             }
 
             updateBoardUI();
+
+            // אם יש צעדים אוםציונליים לשחקן השני, לא לסיים את המשחק
 
             bool  isGameOver = IsGameOver(out Player winner);
 
@@ -460,7 +454,7 @@ namespace CheckersWindowsApp
         {
             m_Game.RestartGame();
             updateBoardUI();
-            GameProcess();
+            gameProcess();
         }
 
         private void FormGrid_FormClosed(object sender, FormClosedEventArgs e)

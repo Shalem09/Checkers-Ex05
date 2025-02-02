@@ -28,36 +28,6 @@ namespace CheckersLibrary
             {
                 for (int col = 0; col < cols; col++)
                 {
-
-                    //if (row == 0 && col == 9)
-                    //{
-                    //    m_Grid[row, col] = ePieceType.O;
-                    //}
-                    //else if (row == 2 && col == 7)
-                    //{
-                    //    m_Grid[row, col] = ePieceType.X;
-                    //}
-                    //else if (row == 3 && col == 6)
-                    //{
-                    //    m_Grid[row, col] = ePieceType.X;
-                    //}
-                    //else if (row == 5 && col == 4)
-                    //{
-                    //    m_Grid[row, col] = ePieceType.X;
-                    //}
-                    //else if (row == 7 && col == 2)
-                    //{
-                    //    m_Grid[row, col] = ePieceType.X;
-                    //}
-                    //else if (row == 9 && col == 8)
-                    //{
-                    //    m_Grid[row, col] = ePieceType.X;
-                    //}
-                    //else
-                    //{
-                    //    m_Grid[row, col] = ePieceType.None;
-                    //}
-
                     if (row < playerRows && (row + col) % 2 == 1)
                     {
                         m_Grid[row, col] = ePieceType.O;
