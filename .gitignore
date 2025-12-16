@@ -5,3 +5,9 @@ obj/
 *.suo
 *.cache
 *.log
+.vs/
+bin/
+obj/
+*.user/
+*.suo
+
