@@ -32,25 +32,25 @@ The solution contains two projects:
 > Screenshots are stored in the `assets/` folder.
 
 ### Game Board
-![Game Board](assets/board.png)
+![Game Board](assets/screenshots/board.png)
 
 ### Game Settings
-![Game Settings](assets/game-settings.png)
+![Game Settings](assets/screenshots/game-settings.png)
 
 ### Color Picker
-![Color Picker](assets/color-picker.png)
+![Color Picker](assets/screenshots/color-picker.png)
 
 ### Invalid Move
-![Invalid Move](assets/invalid-move.png)
+![Invalid Move](assets/screenshots/invalid-move.png)
 
 ### Mandatory Capture
-![Eating Move](assets/eating-move.png)
+![Eating Move](assets/screenshots/eating-move.png)
 
 ### King Promotion
-![King Pawn](assets/king-pawn.png)
+![King Pawn](assets/screenshots/king-pawn.png)
 
 ### Winning Screen
-![Winning Screen](assets/winning.png)
+![Winning Screen](assets/screenshots/winning.png)
 
 ---
 
