@@ -1,21 +1,80 @@
-# Checkers (C# / OOP)
+# Checkers Game (Damka) – C# WinForms
 
-Checkers game implemented in C# with a separated game engine (library) and UIs (console + windows app).
+A fully featured **Checkers (Damka)** game implemented in **C# using WinForms**, developed as part of an Object-Oriented Programming course.
 
-## Projects
-- **CheckersLibrary** – game engine (rules, board, move validation)
-- **CheckersConsoleUI** – console UI
-- **CheckersWindowsApp** – windows UI
+---
 
-## How to Run
-1. Open `CheckersLibrary.sln` in Visual Studio
-2. Choose startup project: `CheckersConsoleUI` or `CheckersWindowsApp`
-3. Run
+## 🎮 Features
 
-## Architecture (high level)
-- Engine is independent from UI (separation of concerns)
-- UI only handles input/output and calls the engine
+- Classic Checkers (Damka) rules
+- Single-player vs Computer
+- Two-player mode
+- Board sizes: 6×6, 8×8, 10×10
+- King promotion
+- Mandatory capture (eating move)
+- Invalid move detection
+- Score tracking and win detection
+- Custom background color picker
 
-## Next steps
-- Add unit tests for the engine
-- Add CI (build + tests) with GitHub Actions
+---
+
+## 🧩 Architecture
+
+The solution contains two projects:
+
+- **CheckersLibrary** – core game logic (rules, board, moves, scoring)
+- **CheckersWindowsApp** – WinForms UI and user interaction
+
+---
+
+## 🖼️ Screenshots
+
+> Screenshots are stored in the `assets/` folder.
+
+### Game Board
+![Game Board](assets/board.png)
+
+### Game Settings
+![Game Settings](assets/game-settings.png)
+
+### Color Picker
+![Color Picker](assets/color-picker.png)
+
+### Invalid Move
+![Invalid Move](assets/invalid-move.png)
+
+### Mandatory Capture
+![Eating Move](assets/eating-move.png)
+
+### King Promotion
+![King Pawn](assets/king-pawn.png)
+
+### Winning Screen
+![Winning Screen](assets/winning.png)
+
+---
+
+## 🛠️ Technologies
+
+- C#
+- .NET Framework
+- WinForms
+- Object-Oriented Programming
+
+---
+
+## ▶️ How to Run
+
+1. Clone the repository
+2. Open the solution file in Visual Studio
+3. Set **CheckersWindowsApp** as startup project
+4. Run with F5
+
+---
+
+## 📚 Educational Focus
+
+- Inheritance & polymorphism
+- Separation of UI and logic
+- Event-driven programming
+- Game state management
